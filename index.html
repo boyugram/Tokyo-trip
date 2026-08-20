@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>東京 9/4–9/8 · 代官山×中目黑採集之旅</title>
+<style>
+  :root{
+    --bg:#FAF8F4; --surface:#FFFFFF; --ink:#26231E; --sub:#6E675C;
+    --line:#E6E1D7; --accent:#3E6B50; --accent-ink:#31543F;
+    --amber:#A9741F; --warn:#B0432C; --warn-bg:#F7E8E3;
+    --chip-bg:#EDF2EC; --time:#8A8375; --done:#5B8A6E; --sky:#4A6E8A;
+  }
+  :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#191A18; --surface:#211F1C; --ink:#EDE9E1; --sub:#A69F91;
+      --line:#37342E; --accent:#7FB393; --accent-ink:#9CC7AC;
+      --amber:#D8A860; --warn:#E08A74; --warn-bg:#3A2721;
+      --chip-bg:#25302A; --time:#877F70; --done:#7FB393; --sky:#8FB4D1;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#191A18; --surface:#211F1C; --ink:#EDE9E1; --sub:#A69F91;
+    --line:#37342E; --accent:#7FB393; --accent-ink:#9CC7AC;
+    --amber:#D8A860; --warn:#E08A74; --warn-bg:#3A2721;
+    --chip-bg:#25302A; --time:#877F70; --done:#7FB393; --sky:#8FB4D1;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink); margin:0;
+    font-family:"Hiragino Sans","Noto Sans TC","PingFang TC","Yu Gothic",sans-serif;
+    font-size:15px; line-height:1.75;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:32px 20px 80px}
+  header{margin-bottom:28px}
+  .eyebrow{font-size:12px; letter-spacing:.18em; color:var(--accent); font-weight:600; text-transform:uppercase}
+  h1{
+    font-family:"Hiragino Mincho ProN","Noto Serif TC",serif;
+    font-size:30px; line-height:1.35; margin:.3em 0 .2em; text-wrap:balance; font-weight:600;
+  }
+  .meta{color:var(--sub); font-size:13.5px}
+  .meta b{color:var(--ink); font-weight:600}
+  h2{
+    font-family:"Hiragino Mincho ProN","Noto Serif TC",serif;
+    font-size:21px; margin:44px 0 6px; font-weight:600; text-wrap:balance;
+  }
+  h2 .date{color:var(--accent-ink); font-family:inherit}
+  .theme-line{color:var(--sub); font-size:13.5px; margin:0 0 16px}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:18px 18px 14px; margin:14px 0;
+  }
+  .rules{margin:24px 0}
+  .rules h3, .wx h3{font-size:14px; margin:0 0 10px; letter-spacing:.08em; color:var(--sub); font-weight:600}
+  .rules ul{margin:0; padding-left:1.2em}
+  .rules li{margin:4px 0}
+  .tag{
+    display:inline-block; font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:99px;
+    background:var(--chip-bg); color:var(--accent-ink); margin-right:6px; vertical-align:1px; white-space:nowrap;
+  }
+  .tag.warn{background:var(--warn-bg); color:var(--warn)}
+  .wx-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:4px 0 10px}
+  .wx-day{
+    border:1px solid var(--line); border-radius:8px; padding:8px 6px; text-align:center;
+  }
+  .wx-day .d{font-size:12px; font-weight:600; color:var(--sky)}
+  .wx-day .temp{font-size:14.5px; font-weight:600; font-variant-numeric:tabular-nums; margin:2px 0}
+  .wx-day .cond{font-size:11.5px; color:var(--sub); line-height:1.4}
+  .wx-note{font-size:12.5px; color:var(--sub); line-height:1.6; margin:8px 0 2px}
+  .dayhead{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-top:44px}
+  .dayhead h2{margin:0 0 6px}
+  .dayhead .theme-line{margin:0}
+  .stamp{width:74px; height:74px; flex:0 0 auto; transform:rotate(8deg); margin-top:2px}
+  figure.route{margin:2px 0 10px; border-bottom:1px solid var(--line); padding:4px 0 10px}
+  figure.route svg{width:100%; height:auto; display:block}
+  figure.route figcaption{font-size:11.5px; color:var(--sub); margin-top:2px}
+  .rt{fill:none; stroke:var(--accent); stroke-width:2.5; stroke-linecap:round}
+  .rt.train{stroke:var(--sky); stroke-dasharray:2 6}
+  .nd{fill:var(--surface); stroke:var(--accent); stroke-width:2.5}
+  .nd.hub{fill:var(--accent)}
+  svg .lb{font-size:12px; font-weight:600; fill:currentColor}
+  svg .sm{font-size:10.5px; font-weight:400; fill:var(--sub)}
+  .row{display:flex; gap:14px; padding:10px 0; border-top:1px solid var(--line); align-items:baseline}
+  .row:first-of-type{border-top:none}
+  .t{
+    flex:0 0 52px; font-variant-numeric:tabular-nums; color:var(--time);
+    font-size:13px; font-weight:600; letter-spacing:.02em;
+  }
+  .what{flex:1; min-width:0}
+  .what b{font-weight:600}
+  .note{display:block; color:var(--sub); font-size:13px; line-height:1.6; margin-top:1px}
+  .hours{color:var(--amber); font-size:12.5px; white-space:nowrap}
+  ul.plain{margin:6px 0 0; padding-left:1.25em}
+  ul.plain li{margin:5px 0}
+  .check li{list-style:none; position:relative; padding-left:1.6em; margin:7px 0}
+  .check li::before{
+    content:"□"; position:absolute; left:0; color:var(--accent); font-weight:700;
+  }
+  .check li.done::before{content:"✓"; color:var(--done)}
+  .check{padding-left:0; margin:6px 0 0}
+  footer{margin-top:48px; color:var(--sub); font-size:12.5px; border-top:1px solid var(--line); padding-top:14px}
+  @media (max-width:480px){
+    .t{flex-basis:46px} h1{font-size:26px}
+    .wx-grid{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Tokyo · Sep 4–8</div>
+  <h1>代官山 × 中目黑 軟裝採集之旅</h1>
+  <div class="meta">住宿 <b>ONE @ Tokyo(押上)</b> · 半藏門線直通澀谷約 33 分 · 淺草線直達大門約 20 分 · 節奏:<b>每天 10:30 到第一站</b></div>
+</header>
+
+<div class="card wx">
+  <h3>天氣日報(9 月上旬・東京)</h3>
+  <div class="wx-grid">
+    <div class="wx-day"><div class="d">9/4 五</div><div class="temp">30° / 25°</div><div class="cond">悶熱・午後雷雨可能</div></div>
+    <div class="wx-day"><div class="d">9/5 六</div><div class="temp">30° / 26°</div><div class="cond">東風・悶熱</div></div>
+    <div class="wx-day"><div class="d">9/6 日</div><div class="temp">29° / 25°</div><div class="cond">南風</div></div>
+    <div class="wx-day"><div class="d">9/7 一</div><div class="temp">29° / 25°</div><div class="cond">南風</div></div>
+    <div class="wx-day"><div class="d">9/8 二</div><div class="temp">29° / 25°</div><div class="cond">東北風</div></div>
+  </div>
+  <p class="wx-note">⚠ 目前(8/19 查)距離出發還有兩週以上,以上是<b>長期模型推估值,不是逐日預報</b>。九月上旬東京還是夏天:體感 33°C+、濕度高、午後雷陣雨常見,且為<b>颱風季高峰</b>(九月平均 5–7 個颱風影響關東)。<b>8/26 後再查 tenki.jp / Weathernews 十日預報</b>,出發前 2–3 天盯颱風路徑。裝備:吸汗毛巾+鏡頭防潮布比雨傘更常用到;若遇雨,目黑川河岸散步段可砍,店家行程照跑。</p>
+</div>
+
+<div class="card rules">
+  <h3>行程骨架 — 這幾條決定了誰排哪天</h3>
+  <ul>
+    <li><span class="tag">順路神招</span>中目黑就在<b>東橫線</b>上,特急直達橫濱約 25 分 → <b>9/4(五)早上排中目黑,下午無縫去橫濱</b></li>
+    <li><span class="tag warn">週一休</span>COW BOOKS;<span class="tag warn">週二休</span>TRAVELER'S FACTORY 中目黑、dessin → 書店群 <b>9/4(五)全開,一次收掉</b>(漏了週六日還能補)</li>
+    <li><span class="tag warn">週二休</span>Dill Pickle Club(蔵前・鳥越)→ 排 <b>9/6 下午</b>,離押上超近但別留到 9/8;<span class="tag">平日限定</span>OZEKI Tokyo Gallery(人形町,AKARI 官方展廳,六日祝休)→ <b>9/8</b> 壽司後順路</li>
+    <li><span class="tag">五六日限定</span>THE CORNER(代官山)→ <b>9/5</b>;Nadoya no katte(西原)→ <b>9/6</b>(最後視窗)</li>
+    <li><span class="tag">平日限定</span>BRICK &amp; MORTAR(多來源標示六日休)→ 排 <b>9/4(五)</b>中目黑日順路收掉(9/7 為備援日),出發前電話確認 03-6303-3300</li>
+    <li><span class="tag">零回頭路</span>9/7 下午改走<b>表參道軟裝軸</b>(GYRE:CIBONE+MoMA Design Store);表參道→押上<b>半藏門線一車直達</b>,不再拉回中目黑/惠比壽</li>
+    <li><span class="tag">已預約</span>立喰い鮨 浩也 9/8(二)12:00,大門站 — 押上淺草線直達</li>
+    <li><span class="tag">計程車參考</span>起跳約 ¥500,之後約 ¥400/km;頁內為離峰估算,平日 8–10 與 17–19 點塞車加 3–5 成。<b>跨城長途(押上↔中目黑一帶)地鐵幾乎都更快</b>,小黃適合區內短程(3km 內)或趕光線時</li>
+  </ul>
+</div>
+
+<div class="dayhead">
+<div>
+<h2><span class="date">9/4(五)</span> 中目黑順路半日 → 橫濱</h2>
+<p class="theme-line">主題素材:書店散步主力 + 軟裝地圖第一批;東橫線直達橫濱,零繞路</p>
+</div>
+<svg class="stamp" viewBox="0 0 96 96" role="img" aria-label="9/4 書店日戳章">
+  <circle cx="48" cy="48" r="43" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+  <g fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round">
+    <rect x="30" y="46" width="36" height="9" rx="2"/>
+    <rect x="34" y="36" width="30" height="9" rx="2" transform="rotate(-4 49 40)"/>
+    <rect x="36" y="26" width="24" height="9" rx="2" transform="rotate(3 48 30)"/>
+  </g>
+  <text x="48" y="76" text-anchor="middle" font-size="10" fill="var(--accent)" font-weight="700" letter-spacing="1.5">SEP 4</text>
+</svg>
+</div>
+<div class="card">
+<figure class="route">
+<svg viewBox="0 0 680 195" role="img" aria-label="9/4 路線:押上搭車到中目黑,沿目黑川逛書店群與選物店,含平日限定的 BRICK & MORTAR,再搭東橫線特急直達橫濱">
+  <path class="rt train" d="M60,45 H230"/>
+  <path class="rt" d="M230,45 H570"/>
+  <path class="rt" d="M570,45 C628,45 628,135 570,135"/>
+  <path class="rt" d="M570,135 H230"/>
+  <path class="rt train" d="M230,135 H60"/>
+  <circle class="nd hub" cx="60" cy="45" r="6"/>
+  <circle class="nd" cx="230" cy="45" r="6"/>
+  <circle class="nd" cx="380" cy="45" r="6"/>
+  <circle class="nd" cx="570" cy="45" r="6"/>
+  <circle class="nd" cx="570" cy="135" r="6"/>
+  <circle class="nd" cx="400" cy="135" r="6"/>
+  <circle class="nd" cx="230" cy="135" r="6"/>
+  <circle class="nd hub" cx="60" cy="135" r="6"/>
+  <text class="lb" x="60" y="18" text-anchor="middle">押上 <tspan class="sm">9:45</tspan></text>
+  <text class="lb" x="230" y="18" text-anchor="middle">中目黑・ONIBUS <tspan class="sm">10:30</tspan></text>
+  <text class="lb" x="380" y="18" text-anchor="middle">MCM 家具 <tspan class="sm">11:00</tspan></text>
+  <text class="lb" x="570" y="18" text-anchor="middle">書店群×3 <tspan class="sm">12:00</tspan></text>
+  <text class="lb" x="570" y="168" text-anchor="middle">BRICK &amp; MORTAR <tspan class="sm">13:20</tspan></text>
+  <text class="lb" x="400" y="168" text-anchor="middle">SIDEWALK STAND <tspan class="sm">14:00</tspan></text>
+  <text class="lb" x="230" y="168" text-anchor="middle">中目黑站 <tspan class="sm">15:10</tspan></text>
+  <text class="lb" x="60" y="168" text-anchor="middle">橫濱 <tspan class="sm">15:45</tspan></text>
+  <text class="sm" x="145" y="36" text-anchor="middle">半藏門線→東橫線 45分</text>
+  <text class="sm" x="305" y="36" text-anchor="middle">目黑川散步 10分</text>
+  <text class="sm" x="475" y="36" text-anchor="middle">走 12分</text>
+  <text class="sm" x="641" y="94" text-anchor="middle">8分</text>
+  <text class="sm" x="485" y="126" text-anchor="middle">走 5分</text>
+  <text class="sm" x="315" y="126" text-anchor="middle">走 5分</text>
+  <text class="sm" x="145" y="126" text-anchor="middle">東橫線特急 25分</text>
+</svg>
+<figcaption>9/4 行動地圖(實線=步行・虛線=電車;MCM=Mid-Century MODERN;書店群=TRAVELER'S FACTORY→dessin→COW BOOKS);各點都在 10 分腳程內,行李可寄中目黑站 coin locker</figcaption>
+</figure>
+  <div class="row"><div class="t">10:30</div><div class="what"><b>中目黑站集合 → 目黑川熱身</b><span class="note">ONIBUS COFFEE(9:00–18:00)拿杯咖啡,沿河岸拍空景;行李多的話中目黑站有 coin locker。押上過來:地鐵 45 分/計程車約 40 分・¥6,500 上下(不建議,一樣慢還貴)</span></div></div>
+  <div class="row"><div class="t">11:00</div><div class="what"><b>Mid-Century MODERN</b> <span class="hours">11:00–20:00</span><span class="note">2025/6 搬到青葉台 1-29-6,河岸路線上;AKARI 與 vintage 家具</span></div></div>
+  <div class="row"><div class="t">12:00</div><div class="what"><b>書店群一次收:TRAVELER'S FACTORY → dessin → COW BOOKS</b> <span class="hours">皆 12:00 開</span><span class="note">週五三家全開;今天收掉,週六就不用趕</span></div></div>
+  <div class="row"><div class="t">13:20</div><div class="what"><b>BRICK &amp; MORTAR</b> <span class="hours">12:00–19:00 · 平日限定</span><span class="note">中目黑 1-4-4,站旁;原排 9/7,移來這裡就不用再跑一趟中目黑;出發前電話確認 03-6303-3300</span></div></div>
+  <div class="row"><div class="t">14:00</div><div class="what"><b>SIDEWALK STAND 午餐</b> <span class="hours">9:00–21:00</span><span class="note">三明治;同棟 1F 就是 COVERCHORD(11:00–19:00),一次拍完</span></div></div>
+  <div class="row"><div class="t">15:10</div><div class="what"><b>中目黑 → 橫濱</b><span class="note">東橫線特急直達約 25–30 分,15:45 前到橫濱(計程車走高速約 45 分・¥10,000+,別考慮);下午橫濱時間卡死的話,把 BRICK &amp; MORTAR 移回 9/7 備援</span></div></div>
+</div>
+
+<div class="dayhead">
+<div>
+<h2><span class="date">9/5(六)</span> 中目黑 × 代官山 主題日</h2>
+<p class="theme-line">主題素材:「東京最棒的一天:代官山+中目黑」一天拍完整條敘事線 — 9/4 已收掉書店群,今天節奏很人道</p>
+</div>
+<svg class="stamp" viewBox="0 0 96 96" role="img" aria-label="9/5 披薩日戳章">
+  <circle cx="48" cy="48" r="43" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+  <g fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M31 30 L65 30 L48 58 Z"/>
+    <path d="M29 28 Q48 20 67 28"/>
+  </g>
+  <circle cx="44" cy="36" r="2.6" fill="var(--accent)"/>
+  <circle cx="54" cy="39" r="2.6" fill="var(--accent)"/>
+  <circle cx="47" cy="46" r="2.6" fill="var(--accent)"/>
+  <text x="48" y="76" text-anchor="middle" font-size="10" fill="var(--accent)" font-weight="700" letter-spacing="1.5">SEP 5</text>
+</svg>
+</div>
+<div class="card">
+<figure class="route">
+<svg viewBox="0 0 680 195" role="img" aria-label="9/5 路線:押上到池尻大橋,沿目黑川走到中目黑逛 1LDK,再走上代官山逛四家店,傍晚走去惠比壽喝奶茶,回中目黑吃聖林館">
+  <path class="rt train" d="M60,45 H230"/>
+  <path class="rt" d="M230,45 H570"/>
+  <path class="rt" d="M570,45 C628,45 628,135 570,135"/>
+  <path class="rt" d="M570,135 H230"/>
+  <path class="rt" d="M230,135 H60"/>
+  <circle class="nd hub" cx="60" cy="45" r="6"/>
+  <circle class="nd" cx="230" cy="45" r="6"/>
+  <circle class="nd" cx="400" cy="45" r="6"/>
+  <circle class="nd" cx="570" cy="45" r="6"/>
+  <circle class="nd" cx="570" cy="135" r="6"/>
+  <circle class="nd" cx="440" cy="135" r="6"/>
+  <circle class="nd" cx="315" cy="135" r="6"/>
+  <circle class="nd" cx="190" cy="135" r="6"/>
+  <circle class="nd hub" cx="60" cy="135" r="6"/>
+  <text class="lb" x="60" y="18" text-anchor="middle">押上 <tspan class="sm">9:40</tspan></text>
+  <text class="lb" x="230" y="18" text-anchor="middle">School Bus 池尻大橋 <tspan class="sm">10:30</tspan></text>
+  <text class="lb" x="400" y="18" text-anchor="middle">1LDK 三店 <tspan class="sm">12:15</tspan></text>
+  <text class="lb" x="570" y="18" text-anchor="middle">THE CORNER <tspan class="sm">14:00</tspan></text>
+  <text class="lb" x="570" y="168" text-anchor="middle">Saturdays <tspan class="sm">14:45</tspan></text>
+  <text class="lb" x="440" y="168" text-anchor="middle">N.SUGAR <tspan class="sm">15:15</tspan></text>
+  <text class="lb" x="315" y="168" text-anchor="middle">DOLCE <tspan class="sm">16:00</tspan></text>
+  <text class="lb" x="190" y="168" text-anchor="middle">uRn chai <tspan class="sm">16:45</tspan></text>
+  <text class="lb" x="60" y="168" text-anchor="middle">聖林館 <tspan class="sm">18:00 ✓訂</tspan></text>
+  <text class="sm" x="145" y="36" text-anchor="middle">半藏門線直通 45分</text>
+  <text class="sm" x="315" y="36" text-anchor="middle">目黑川散步 2km</text>
+  <text class="sm" x="485" y="36" text-anchor="middle">上坡走 15分</text>
+  <text class="sm" x="641" y="94" text-anchor="middle">3分</text>
+  <text class="sm" x="505" y="126" text-anchor="middle">走 5分</text>
+  <text class="sm" x="378" y="126" text-anchor="middle">走 5分</text>
+  <text class="sm" x="253" y="126" text-anchor="middle">走 12分</text>
+  <text class="sm" x="125" y="126" text-anchor="middle">1站・黃昏</text>
+</svg>
+<figcaption>9/5 行動地圖 — 一條線走完不回頭:河岸北端進、代官山繞一圈、惠比壽喝奶茶、黃昏回河岸吃晚餐(N.SUGAR 站含 Bonjour Records)</figcaption>
+</figure>
+  <div class="row"><div class="t">10:30</div><div class="what"><b>SCHOOL BUS COFFEE STOP</b> <span class="hours">9:00–19:00</span><span class="note">池尻大橋;押上半藏門線直通一車直達約 45 分,9:40 出門即可(計程車約 45 分・¥7,000 上下,無優勢);貝果早午餐</span></div></div>
+  <div class="row"><div class="t">11:30</div><div class="what"><b>沿目黑川散步往中目黑</b><span class="note">約 2km 河岸 b-roll,慢慢拍</span></div></div>
+  <div class="row"><div class="t">12:15</div><div class="what"><b>1LDK 三店</b> <span class="hours">週末 12:00–19:00</span><span class="note">nakameguro / apartments.(生活選品)/ annex 三間相鄰,今天有時間好好逛;想收 +81(五本木,週末 12:00 開)的話從這裡走 12 分,來回多抓 40 分</span></div></div>
+  <div class="row"><div class="t">13:30</div><div class="what"><b>走去代官山</b><span class="note">15 分坡道,沿路可拍;想吃披薩午餐的話聖林館週六午 11:30–LO14:30(不收訂位、要排)</span></div></div>
+  <div class="row"><div class="t">14:00</div><div class="what"><b>THE CORNER</b> <span class="hours">12:00–18:00 · 只開五六日</span><span class="note">出發前掃 IG 確認當週開店</span></div></div>
+  <div class="row"><div class="t">14:45</div><div class="what"><b>Saturdays NYC Tokyo</b> <span class="hours">11:00–19:00</span><span class="note">拿鐵 + 露台,不可預約先到先得</span></div></div>
+  <div class="row"><div class="t">15:15</div><div class="what"><b>NUMBER SUGAR → Bonjour Records</b> <span class="hours">–19:00 / –20:00</span><span class="note">焦糖伴手禮 + 唱片行,都在猿樂町步行圈</span></div></div>
+  <div class="row"><div class="t">16:00</div><div class="what"><b>DOLCE TACUBO 本店</b> <span class="hours">11:00–19:00 · 不定休</span><span class="note">蛋糕常售罄 → TableCheck 預約最保險</span></div></div>
+  <div class="row"><div class="t">16:45</div><div class="what"><b>uRn. chAi&amp;TeA 惠比壽</b> <span class="hours">9:30–20:00 無休</span><span class="note">代官山走過去約 12 分;原本排 9/7 的香料奶茶移到這裡,就不用再專程跑惠比壽;店小座位少,離峰幾乎不排</span></div></div>
+  <div class="row"><div class="t">17:35</div><div class="what"><b>惠比壽 → 中目黑</b><span class="note">日比谷線 1 站(或走 15 分),黃昏目黑川收尾鏡頭;17:50 前到店最保險</span></div></div>
+  <div class="row"><div class="t">18:00</div><div class="what"><b>聖林館 Seirinkan 晚餐 ✓ 已訂位</b> <span class="hours">週六晚 17:00–LO20:45 · 無休</span><span class="note">陳桑 4 位;只有 Margherita ¥2,000 / Marinara ¥1,800 兩種 — 四個人建議兩種都點</span></div></div>
+</div>
+
+<div class="dayhead">
+<div>
+<h2><span class="date">9/6(日)</span> 西原晨午 → 奧澀谷 → 緩衝</h2>
+<p class="theme-line">主題素材:咖啡篇一日燒完(Paddlers 熱狗 + 老屋咖啡 + Fuglen 本店)+ 奧澀書店 + 蔵前 vintage;全程順著一條散步線</p>
+</div>
+<svg class="stamp" viewBox="0 0 96 96" role="img" aria-label="9/6 咖啡日戳章">
+  <circle cx="48" cy="48" r="43" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+  <g fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 34 H60 V48 a10 10 0 0 1 -10 10 h-8 a10 10 0 0 1 -10 -10 Z"/>
+    <path d="M60 37 h4 a6 6 0 0 1 0 12 h-4"/>
+    <path d="M40 21 q3 4 0 9"/>
+    <path d="M50 21 q3 4 0 9"/>
+  </g>
+  <text x="48" y="76" text-anchor="middle" font-size="10" fill="var(--accent)" font-weight="700" letter-spacing="1.5">SEP 6</text>
+</svg>
+</div>
+<div class="card">
+<figure class="route">
+<svg viewBox="0 0 680 130" role="img" aria-label="9/6 路線:押上到幡谷吃 Paddlers,走去代代木上原的 Nadoya,散步下富谷到 Fuglen Tokyo,再走去奧澀谷 SPBS,下午到蔵前 Dill Pickle Club,傍晚回押上">
+  <path class="rt train" d="M55,62 H165"/>
+  <path class="rt" d="M165,62 H495"/>
+  <path class="rt train" d="M495,62 H605"/>
+  <circle class="nd hub" cx="55" cy="62" r="6"/>
+  <circle class="nd" cx="165" cy="62" r="6"/>
+  <circle class="nd" cx="275" cy="62" r="6"/>
+  <circle class="nd" cx="385" cy="62" r="6"/>
+  <circle class="nd" cx="495" cy="62" r="6"/>
+  <circle class="nd hub" cx="605" cy="62" r="6"/>
+  <text class="lb" x="55" y="32" text-anchor="middle">押上 <tspan class="sm">9:50</tspan></text>
+  <text class="lb" x="165" y="98" text-anchor="middle">Paddlers <tspan class="sm">10:30</tspan></text>
+  <text class="lb" x="275" y="32" text-anchor="middle">Nadoya <tspan class="sm">11:45</tspan></text>
+  <text class="lb" x="385" y="98" text-anchor="middle">FUGLEN <tspan class="sm">13:15</tspan></text>
+  <text class="lb" x="495" y="32" text-anchor="middle">SPBS <tspan class="sm">14:15</tspan></text>
+  <text class="lb" x="605" y="98" text-anchor="middle">Dill Pickle <tspan class="sm">15:45</tspan></text>
+  <text class="sm" x="110" y="48" text-anchor="middle">京王直通 40分</text>
+  <text class="sm" x="220" y="48" text-anchor="middle">走 12分</text>
+  <text class="sm" x="330" y="48" text-anchor="middle">走 15分</text>
+  <text class="sm" x="440" y="48" text-anchor="middle">走 5分</text>
+  <text class="sm" x="550" y="48" text-anchor="middle">銀座線→蔵前 40分</text>
+</svg>
+<figcaption>9/6 行動地圖 — 幡谷到奧澀全程步行一條線;收尾在蔵前 Dill Pickle Club,離家最近的一站(蔵前→押上淺草線 2 站)</figcaption>
+</figure>
+  <div class="row"><div class="t">10:30</div><div class="what"><b>Paddlers Coffee 西原本店</b> <span class="hours">7:30–16:00</span><span class="note">押上 → 九段下轉都營新宿線(京王直通)→ 幡ヶ谷約 40 分(計程車約 40 分・¥6,500 上下,無優勢);熱狗每天供應(¥1,000),假日中午前可能售完 — 進門先點熱狗再拍</span></div></div>
+  <div class="row"><div class="t">11:45</div><div class="what"><b>Nadoya no katte</b> <span class="hours">9:00–18:00 · 只開五六日</span><span class="note">代代木上原老屋咖啡,步行約 12 分;今天是這趟最後視窗</span></div></div>
+  <div class="row"><div class="t">13:00</div><div class="what"><b>散步下富ヶ谷</b><span class="note">代代木上原 → 富ヶ谷約 15–20 分,邊走邊拍住宅區街景</span></div></div>
+  <div class="row"><div class="t">13:15</div><div class="what"><b>FUGLEN TOKYO(富ヶ谷本店)</b> <span class="hours">週日 9:00–19:00</span><span class="note">奧斯陸名店東京本店,vintage 北歐家具內裝本身就是軟裝素材;咖啡 + 輕食當午餐,窗邊位要碰運氣</span></div></div>
+  <div class="row"><div class="t">14:15</div><div class="what"><b>SPBS 本店</b> <span class="hours">11:00–21:00</span><span class="note">奧澀谷書店代表,Fuglen 走過去 5 分</span></div></div>
+  <div class="row"><div class="t">15:45</div><div class="what"><b>Dill Pickle Club(蔵前・鳥越)</b> <span class="hours">12:00–19:00 · 週二休</span><span class="note">澀谷銀座線→田原町走過去約 40 分,或計程車約 30 分・¥5,000 上下(這段小黃有省到時間);80–90s 世界各地 vintage 選物 + 咖啡吧,台東區鳥越 2-5-1;逛完蔵前→押上淺草線 2 站到家(計程車 15 分・¥2,000 內)</span></div></div>
+  <div class="row"><div class="t">17:30</div><div class="what"><b>緩衝時間 — 前兩天的保險絲</b><span class="note">9/5 若有漏拍,把 Dill Pickle 提前或延後,優先回中目黑補(週末限定店今天還開:THE CORNER –18:00、書店群、1LDK);都收齊了就回押上拍晴空塔黃昏</span></div></div>
+</div>
+
+<div class="dayhead">
+<div>
+<h2><span class="date">9/7(一)</span> TAS Yard → 表參道軟裝軸 → 直達回家</h2>
+<p class="theme-line">主題素材:美食篇(法式吐司)+ 表參道軟裝(CIBONE/MoMA Design Store);半藏門線一直線,零回頭路</p>
+</div>
+<svg class="stamp" viewBox="0 0 96 96" role="img" aria-label="9/7 法式吐司日戳章">
+  <circle cx="48" cy="48" r="43" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+  <g fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round">
+    <rect x="32" y="42" width="32" height="12" rx="4"/>
+    <rect x="32" y="30" width="32" height="12" rx="4"/>
+  </g>
+  <rect x="43" y="25" width="10" height="7" rx="1.5" fill="var(--accent)"/>
+  <text x="48" y="76" text-anchor="middle" font-size="10" fill="var(--accent)" font-weight="700" letter-spacing="1.5">SEP 7</text>
+</svg>
+</div>
+<div class="card">
+<figure class="route">
+<svg viewBox="0 0 680 120" role="img" aria-label="9/7 路線:押上到北參道排 TAS Yard,走去表參道 PAMM家與 GYRE 的 CIBONE 和 MoMA Design Store,傍晚表參道半藏門線一車直達回押上">
+  <path class="rt train" d="M60,60 H195"/>
+  <path class="rt" d="M195,60 H475"/>
+  <path class="rt train" d="M475,60 H615"/>
+  <circle class="nd hub" cx="60" cy="60" r="6"/>
+  <circle class="nd" cx="195" cy="60" r="6"/>
+  <circle class="nd" cx="335" cy="60" r="6"/>
+  <circle class="nd" cx="475" cy="60" r="6"/>
+  <circle class="nd hub" cx="615" cy="60" r="6"/>
+  <text class="lb" x="60" y="32" text-anchor="middle">押上 <tspan class="sm">10:10</tspan></text>
+  <text class="lb" x="195" y="32" text-anchor="middle">TAS YARD <tspan class="sm">11:00</tspan></text>
+  <text class="lb" x="335" y="32" text-anchor="middle">PAMM家 <tspan class="sm">13:15</tspan></text>
+  <text class="lb" x="475" y="32" text-anchor="middle">GYRE 軟裝雙店 <tspan class="sm">14:15</tspan></text>
+  <text class="lb" x="615" y="32" text-anchor="middle">回押上 <tspan class="sm">19:00</tspan></text>
+  <text class="sm" x="127" y="84" text-anchor="middle">→北參道 45分</text>
+  <text class="sm" x="265" y="84" text-anchor="middle">走 15分</text>
+  <text class="sm" x="405" y="84" text-anchor="middle">走 8分</text>
+  <text class="sm" x="545" y="84" text-anchor="middle">半藏門線直達 40分</text>
+</svg>
+<figcaption>9/7 行動地圖 — 千駄谷到表參道全程步行,GYRE=CIBONE(B1)+MoMA Design Store(3F);表參道半藏門線一車直達押上,零回頭路</figcaption>
+</figure>
+  <div class="row"><div class="t">11:00</div><div class="what"><b>TAS YARD 排隊</b> <span class="hours">11:30 開店 · 週一有營業(已確認)</span><span class="note">10:10 出門即可(押上 → 北參道地鐵約 45 分;計程車約 40 分・¥6,000 上下,但週一早上跨城易塞,別賭);它不是早餐店,11:30 才開;法式吐司開店限量、平日約 14:00 前售完 → 11:00 到門口排第一輪最穩</span></div></div>
+  <div class="row"><div class="t">11:30</div><div class="what"><b>法式吐司早午餐</b></div></div>
+  <div class="row"><div class="t">13:15</div><div class="what"><b>PAMM家 表參道</b> <span class="hours">11:00–19:00</span><span class="note">從千駄谷步行過去約 15 分(週日在 PARCO 收過的話可跳過)</span></div></div>
+  <div class="row"><div class="t">14:15</div><div class="what"><b>GYRE 一棟收兩家:CIBONE + MoMA Design Store</b> <span class="hours">11:00–20:00 · 不定休</span><span class="note">神宮前 5-10-1(表參道之丘斜對面);CIBONE 在 B1,東京軟裝選物的指標店,MoMA Design Store 在 3F — 軟裝地圖素材密度最高的一棟</span></div></div>
+  <div class="row"><div class="t">16:00</div><div class="what"><b>選配:Found MUJI 青山 或 表參道巷弄補拍</b><span class="note">Found MUJI 走約 8 分,無印的選品原型店,合軟裝主題;不想逛就拍欅木大道黃昏 b-roll</span></div></div>
+  <div class="row"><div class="t">17:30</div><div class="what"><b>晚餐:表參道/原宿自由</b><span class="note">吃完不用轉車 — 下一步直達回家</span></div></div>
+  <div class="row"><div class="t">19:00</div><div class="what"><b>回程:表參道 → 押上</b><span class="note">半藏門線一車直達約 40 分,零回頭路(計程車跨城約 40 分・¥6,500 上下,無優勢);想補中目黑漏拍的話今天才回去,BRICK &amp; MORTAR 平日開到 19:00 當備援</span></div></div>
+</div>
+
+<div class="dayhead">
+<div>
+<h2><span class="date">9/8(二)</span> 大門壽司開場 → 麻布台 → 人形町 AKARI → 游擊</h2>
+<p class="theme-line">主題素材:已訂壽司悠閒開場 + 時效性新店 + AKARI 官方展廳收尾;全程淺草線沿線,回家零負擔</p>
+</div>
+<svg class="stamp" viewBox="0 0 96 96" role="img" aria-label="9/8 壽司日戳章">
+  <circle cx="48" cy="48" r="43" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+  <path d="M30 41 q18 -13 36 0 q-18 7 -36 0 Z" fill="var(--accent)" opacity=".85"/>
+  <rect x="32" y="43" width="32" height="14" rx="7" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="48" y="76" text-anchor="middle" font-size="10" fill="var(--accent)" font-weight="700" letter-spacing="1.5">SEP 8</text>
+</svg>
+</div>
+<div class="card">
+<figure class="route">
+<svg viewBox="0 0 680 120" role="img" aria-label="9/8 路線:押上淺草線直達大門吃浩也壽司,走去麻布台 FAMIMA PARK,日比谷線到人形町 OZEKI Tokyo Gallery,淺草線直達回押上">
+  <path class="rt train" d="M60,60 H195"/>
+  <path class="rt" d="M195,60 H335"/>
+  <path class="rt train" d="M335,60 H475"/>
+  <path class="rt train" d="M475,60 H615"/>
+  <circle class="nd hub" cx="60" cy="60" r="6"/>
+  <circle class="nd" cx="195" cy="60" r="6"/>
+  <circle class="nd" cx="335" cy="60" r="6"/>
+  <circle class="nd" cx="475" cy="60" r="6"/>
+  <circle class="nd hub" cx="615" cy="60" r="6"/>
+  <text class="lb" x="60" y="32" text-anchor="middle">押上 <tspan class="sm">11:20</tspan></text>
+  <text class="lb" x="195" y="32" text-anchor="middle">浩也 大門 <tspan class="sm">12:00</tspan></text>
+  <text class="lb" x="335" y="32" text-anchor="middle">FAMIMA PARK <tspan class="sm">13:30</tspan></text>
+  <text class="lb" x="475" y="32" text-anchor="middle">OZEKI 人形町 <tspan class="sm">15:15</tspan></text>
+  <text class="lb" x="615" y="32" text-anchor="middle">游擊/回家 <tspan class="sm">17:00</tspan></text>
+  <text class="sm" x="127" y="84" text-anchor="middle">淺草線直達 20分</text>
+  <text class="sm" x="265" y="84" text-anchor="middle">走 15–20分</text>
+  <text class="sm" x="405" y="84" text-anchor="middle">日比谷線 神谷町→人形町</text>
+  <text class="sm" x="545" y="84" text-anchor="middle">淺草線直達 15分</text>
+</svg>
+<figcaption>9/8 行動地圖 — 睡到自然醒的收尾日:去程回程都是淺草線直達,中段日比谷線一線串起</figcaption>
+</figure>
+  <div class="row"><div class="t">11:20</div><div class="what"><b>出發 — 睡到自然醒</b><span class="note">押上 → 都營淺草線直達大門,約 20 分零轉乘(計程車約 30 分・¥5,000 上下,反而慢 — 訂位日請搭地鐵求準時)</span></div></div>
+  <div class="row"><div class="t">12:00</div><div class="what"><b>立喰い鮨 浩也(已訂位)— 今日首站</b> <span class="hours">平日午 12:00–14:00</span><span class="note">大門站步行 3 分,僅 9 席;鮨浩也的立食副牌,平日午 omakase 約 ¥3,000</span></div></div>
+  <div class="row"><div class="t">13:30</div><div class="what"><b>FAMIMA PARK AZABUDAI</b> <span class="hours">7:00–23:00 每日</span><span class="note">2026/7 新開幕全家旗艦店(NIGO × 片山正通),神谷町站 2 分;時效性 reel 素材,大門走過去約 15–20 分</span></div></div>
+  <div class="row"><div class="t">15:15</div><div class="what"><b>OZEKI Tokyo Gallery(人形町)</b> <span class="hours">平日 9:00–17:00 · 六日祝休</span><span class="note">Isamu Noguchi AKARI 官方製造商 Ozeki 的展示廳,各尺寸 AKARI 一次體感 — 軟裝主題最強收尾;神谷町搭日比谷線直達人形町約 15 分(計程車約 20 分・¥3,000 上下);2025/5 曾公告營業時間變更,行前掃 IG 再確認</span></div></div>
+  <div class="row"><div class="t">17:00</div><div class="what"><b>游擊時間 — 缺什麼補什麼</b><span class="note">人形町 → 淺草線直達押上 15 分(計程車約 20 分・¥3,000 內,累了可以直接跳車回家)。① 淺草黃昏 + FUGLEN ASAKUSA(週二 8:00–21:00,2F 榻榻米座位;淺草線回程順下車)② 押上主場:晴空塔 golden hour、十間橋水面反射鏡位 ③ TRAVELER'S FACTORY 東京車站 GRANSTA 店(10:00–21:00,人形町走日本橋過去也近)</span></div></div>
+  <div class="row"><div class="t">⚠</div><div class="what"><b>今日公休,游擊別排:</b><span class="note">TRAVELER'S FACTORY 中目黑、dessin、THE CORNER、Nadoya no katte、Dill Pickle Club</span></div></div>
+</div>
+
+<h2>出發前檢查清單</h2>
+<div class="card">
+  <ul class="check">
+    <li class="done">浩也 9/8(二)12:00 已訂位</li>
+    <li class="done">聖林館 9/5(六)18:00 已訂位 — 陳桑 4 位</li>
+    <li>DOLCE TACUBO TableCheck 預約 9/5 下午(不定休 + 蛋糕常售罄)</li>
+    <li>BRICK &amp; MORTAR 電話/IG 確認平日制與 9/4(五)營業(03-6303-3300)</li>
+    <li>8/26 後查 tenki.jp / Weathernews 十日預報;出發前 2–3 天盯颱風路徑</li>
+    <li>出發前一晚掃 IG:TAS Yard、1LDK、ONIBUS、COVERCHORD、THE CORNER(皆不定休)+ OZEKI Tokyo Gallery(@ozekiakari,曾變更時間)+ Dill Pickle Club(@dill_pickle_club)</li>
+  </ul>
+</div>
+
+<h2>IG 三大主題 × 高 CTR 標題提案</h2>
+<div class="card">
+  <ul class="plain">
+    <li><b>① 中目黑 ✕ 代官山|單日行程</b>(素材日:9/4 + 9/5)
+      <span class="note">A.「東京最好逛的兩區,我排成一條線|中目黑→代官山 10 家不走回頭路」</span>
+      <span class="note">B.「東京最完美的一天:10:30 出門就好,一路吃逛到披薩晚餐(存起來照抄)」</span>
+      <span class="note">C.「別再只去澀谷!中目黑✕代官山一日動線,每站走路 5 分鐘就到」</span>
+      <span class="note">封面字 ≤12 字:「東京最好逛的一條線」;首圖用目黑川河岸或代官山坡道縱深</span>
+    </li>
+    <li><b>② 東京軟裝地圖</b>(素材日:9/4 MCM+TF+Brick&amp;Mortar、9/6 Dill Pickle、9/7 CIBONE、9/8 OZEKI+FAMIMA PARK)
+      <span class="note">A.「家裡想要日雜感?這 8 家東京軟裝店存起來(最後一家居然是全家)」</span>
+      <span class="note">B.「東京軟裝地圖|8 家質感選物:vintage 家具、AKARI 官方展廳、NIGO 操刀的全家」</span>
+      <span class="note">C.「不逛藥妝改逛這些!東京 8 家軟裝店,每一家都想整間搬回家」</span>
+      <span class="note">雙鉤子:OZEKI 官方展廳(素材稀有)+ FAMIMA PARK 當壓軸反差張(「連全家都是軟裝」);封面用 AKARI 燈牆或 MCM vintage 家具面</span>
+      <span class="note">FAMIMA 那張的拍法:NIGO×片山正通的陳列、木質與燈光細節、Convenience Wear 服飾牆 — 用軟裝眼拍,不拍一般打卡角度</span>
+    </li>
+    <li><b>③ 東京美味|咖啡 + 美食(輪播)</b>(素材日:全五天 — 熱狗、法式吐司、披薩、立食壽司、甜點、拿鐵)
+      <span class="note">A.「東京吃什麼|這趟最好吃的 10 家:傳說拿鐵、排隊法式吐司、¥3000 立食壽司」</span>
+      <span class="note">B.「在東京只能吃 10 家的話,我會照這份名單吃(每家都順路)」</span>
+      <span class="note">C.「東京美味圖鑑:咖啡✕甜點✕披薩✕壽司,存這篇照著吃就好」</span>
+      <span class="note">輪播結構:每張一家=大圖+一句真心評語+價格;最後一張放五天路線總覽圖衝收藏;名單從 Saturdays、Paddlers 熱狗、TAS Yard、聖林館、浩也、DOLCE TACUBO、Number Sugar、Sidewalk Stand、Fuglen、uRn chai 挑 10 家</span>
+    </li>
+  </ul>
+</div>
+
+<footer>營業時間查證於 2026-08-19,以官方網站/IG/Tabelog 交叉確認;不定休店家以出發前官方 IG 公告為準。天氣為長期推估,8/26 後請改看十日預報。</footer>
+</div>
+
+</body>
+</html>
