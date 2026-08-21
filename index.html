@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="出發東京">
-<meta name="theme-color" content="#F8F6F0">
+<meta name="theme-color" content="#EBEBE3">
 <title>出發東京</title>
 
 <style>
@@ -15,16 +15,20 @@
    * 出發東京(Tokyo Life)— 純靜態旅遊記帳 App（GitHub Pages 版，零後端零 CDN）
    * 色盤：溫潤米白/奶茶 × 霧金；字體：內文系統字，標題/數字/日期 CustomBold
    * ================================================================ */
+  /* ============ Popeye 雜誌 City Boy 全局色彩計畫 ============
+     變數名沿用（cream/gold/…）以免牽動全站選擇器，值全面換新：
+     cream=印刷紙灰白、gold/golddk=深海軍藍主色、goldbd/goldbg=冷調紙感、ink=深鐵灰 */
   :root {
-    --cream:  #F8F6F0;
-    --gold:   #C3A36D;
-    --golddk: #A6854E;
-    --goldbd: #E3D9C2;
-    --goldbg: #FBF9F4;
-    --ink:    #4A433B;
-    --inksub: #8C8272;
-    --inkfad: #B5AC9B;
+    --cream:  #EBEBE3;   /* 頁面背景：冷調印刷紙灰（讓純白卡片跳出來） */
+    --gold:   #2E4370;   /* 主色（亮階）：City Boy Navy */
+    --golddk: #1B2A49;   /* 主色（深階）：深海軍藍 */
+    --goldbd: #E2E2DA;   /* 極細冷調邊框 */
+    --goldbg: #F7F7F2;   /* 輸入框 / 淡底 */
+    --ink:    #2C2C2C;   /* 內文：深鐵灰（不用純黑） */
+    --inksub: #62655F;
+    --inkfad: #9A9D96;
     --warn:   #B0432C;
+    --mustard: #D4A35C;  /* 點綴次色：芥末黃 */
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; }
   html { height: 100%; }
@@ -53,21 +57,20 @@
     flex: none; margin-top: 2px; width: 44px; height: 44px; padding: 0;
     border: none; border-radius: 999px; cursor: pointer;
     background: linear-gradient(135deg, var(--gold), var(--golddk));
-    color: #FFFFFF; box-shadow: 0 5px 14px rgba(166, 133, 78, 0.42);
+    color: #FFFFFF; box-shadow: 0 5px 14px rgba(27, 42, 73, 0.42);
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.12s ease, box-shadow 0.15s ease;
   }
-  .home-btn:active { transform: scale(0.9); box-shadow: 0 3px 8px rgba(166, 133, 78, 0.4); }
+  .home-btn:active { transform: scale(0.9); box-shadow: 0 3px 8px rgba(27, 42, 73, 0.4); }
   .home-btn svg { width: 20px; height: 20px; }
 
   /* ============ 毛玻璃卡片 ============ */
+  /* 卡片：雜誌「資訊方塊」— 純白平面 + 極細邊框 + 極輕陰影 */
   .card {
-    background: rgba(255, 255, 255, 0.72);
-    -webkit-backdrop-filter: blur(18px) saturate(1.35);
-    backdrop-filter: blur(18px) saturate(1.35);
-    border: 1px solid rgba(227, 217, 194, 0.6);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 24px;
-    box-shadow: 0 2px 10px rgba(74, 67, 59, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     padding: 20px;
   }
   .card + .card { margin-top: 18px; }
@@ -85,8 +88,8 @@
   .tabbar {
     background: rgba(255, 255, 255, 0.9);
     -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
-    border: 1px solid rgba(227, 217, 194, 0.55);
-    border-radius: 999px; box-shadow: 0 8px 24px rgba(74, 67, 59, 0.16);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 999px; box-shadow: 0 8px 24px rgba(20, 24, 20, 0.16);
     display: flex; gap: 4px; padding: 6px 8px; align-items: center;
     width: 100%; max-width: 400px;                       /* 完美 5 等份 */
   }
@@ -98,8 +101,8 @@
   .nav-btn:active { transform: scale(0.92); }
   .nav-btn.on {
     color: #FFFFFF;
-    background: linear-gradient(135deg, #CFAF7B, var(--gold) 55%, var(--golddk));
-    box-shadow: 0 4px 12px rgba(195, 163, 109, 0.4);
+    background: linear-gradient(135deg, #3D5588, var(--gold) 55%, var(--golddk));
+    box-shadow: 0 4px 12px rgba(27, 42, 73, 0.4);
     animation: nav-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   @keyframes nav-pop { from { transform: scale(0.88); } to { transform: scale(1); } }
@@ -110,8 +113,8 @@
     position: fixed; right: 24px; z-index: 55;
     bottom: calc(env(safe-area-inset-bottom, 0px) + 88px);
     width: 56px; height: 56px; border-radius: 999px; border: none; cursor: pointer;
-    background: linear-gradient(135deg, #CFAF7B, var(--gold) 55%, var(--golddk));
-    color: #FFFFFF; box-shadow: 0 8px 20px rgba(195, 163, 109, 0.5);
+    background: linear-gradient(135deg, #3D5588, var(--gold) 55%, var(--golddk));
+    color: #FFFFFF; box-shadow: 0 8px 20px rgba(27, 42, 73, 0.5);
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.12s ease;
   }
@@ -121,14 +124,14 @@
   /* ============ 記帳 Modal（AI 辨識模擬 + 匯率換算） ============ */
   .modal {
     position: fixed; inset: 0; z-index: 70; padding: 28px;
-    background: rgba(74, 67, 59, 0.35);
+    background: rgba(20, 24, 20, 0.35);
     -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
     display: flex; align-items: center; justify-content: center;
   }
   .modal.hiddn { display: none; }
   .modal-card {
     background: #FFFFFF; border-radius: 24px; padding: 24px;
-    width: 100%; max-width: 340px; box-shadow: 0 18px 50px rgba(74, 67, 59, 0.3);
+    width: 100%; max-width: 340px; box-shadow: 0 18px 50px rgba(20, 24, 20, 0.3);
   }
   .ring {
     width: 34px; height: 34px; border-radius: 50%; margin: 4px auto 14px;
@@ -144,7 +147,7 @@
     font-size: 16px; color: var(--ink); font-family: inherit; padding: 9px 12px; text-align: right;
     -webkit-user-select: auto; user-select: auto;
   }
-  .exp-input:focus { background: #FFF; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(195, 163, 109, 0.28); }
+  .exp-input:focus { background: #FFF; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(27, 42, 73, 0.28); }
   .exp-conv { margin-top: 14px; font-size: 13px; color: var(--inksub); text-align: center; }
   .exp-conv .font-custom { font-size: 22px; color: var(--golddk); }
   .exp-btns { display: flex; gap: 10px; margin-top: 18px; }
@@ -155,7 +158,7 @@
   }
   .exp-btns button:active { transform: scale(0.95); }
   .btn-ghost { background: var(--goldbg); border: 1px solid var(--goldbd) !important; color: var(--inksub); }
-  .btn-gold { background: linear-gradient(90deg, var(--gold), var(--golddk)); color: #FFF; box-shadow: 0 4px 12px rgba(195, 163, 109, 0.35); }
+  .btn-gold { background: linear-gradient(90deg, var(--gold), var(--golddk)); color: #FFF; box-shadow: 0 4px 12px rgba(27, 42, 73, 0.35); }
 
   /* ============ 1:1 質感地圖容器（手繪風靜態圖 + 毛玻璃導航鈕） ============ */
   .sq-map {
@@ -177,36 +180,41 @@
     font-size: 12px; font-weight: 600; color: var(--golddk); text-decoration: none;
     background: rgba(255, 255, 255, 0.62);
     -webkit-backdrop-filter: blur(10px) saturate(1.3); backdrop-filter: blur(10px) saturate(1.3);
-    border: 1px solid rgba(227, 217, 194, 0.8);
-    box-shadow: 0 3px 10px rgba(74, 67, 59, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 3px 10px rgba(20, 24, 20, 0.12);
     transition: transform 0.12s ease;
   }
   .map-open-btn:active { transform: scale(0.94); }
   .map-open-btn svg { width: 13px; height: 13px; }
-  /* 散點連線地圖（Node Map）：麥克筆/粗線風 — 與品牌粗線體同份量 */
-  .node-map { position: absolute; inset: 0; width: 100%; height: 100%; }
-  /* 軌跡：加粗 + 圓頭膠囊虛線（麥克筆點畫感） */
-  .nm-path {
-    fill: none; stroke: var(--golddk); stroke-width: 4.5;
-    stroke-dasharray: 7 11; stroke-linecap: round; stroke-linejoin: round; opacity: 0.68;
+  /* 散點連線地圖（Node Map）：Popeye 雜誌 City Boy 風 —
+     低飽和海軍藍主線 + 芥末黃備用點 + 深鐵灰文字，線條收細、留白呼吸 */
+  :root {
+    --map-navy: var(--golddk);     /* 地圖點線 = 全局主色海軍藍 */
+    --map-mustard: var(--mustard); /* 備用景點 = 全局芥末黃 */
+    --map-charcoal: var(--ink);    /* 地標文字 = 全局深鐵灰 */
   }
-  .nm-node { fill: var(--golddk); }
+  .node-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .nm-path {
+    fill: none; stroke: var(--map-navy); stroke-width: 3;
+    stroke-dasharray: 6 10; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6;
+  }
+  .nm-node { fill: var(--map-navy); }
   .nm-node-core { fill: var(--cream); }
-  /* 地標文字：全面套用品牌粗線體 */
+  /* 地標文字：粗線體縮小 + 深鐵灰 + 微降不透明度，閱讀更鬆弛 */
   .nm-label {
     font-family: 'CustomBold', -apple-system, BlinkMacSystemFont, "PingFang TC", sans-serif;
-    font-size: 9.5px; fill: var(--ink);
+    font-size: 8.5px; fill: var(--map-charcoal); opacity: 0.92;
   }
-  .nm-poi { fill: none; stroke: var(--gold); stroke-width: 2.4; opacity: 0.42; }
+  .nm-poi { fill: none; stroke: var(--map-mustard); stroke-width: 2; opacity: 0.5; }
   .nm-poi-label {
     font-family: 'CustomBold', -apple-system, BlinkMacSystemFont, "PingFang TC", sans-serif;
-    font-size: 7.5px; fill: var(--inkfad); opacity: 0.85;
+    font-size: 7px; fill: var(--map-charcoal); opacity: 0.45;
   }
   .nm-compass {
     font-family: 'CustomBold', -apple-system, BlinkMacSystemFont, "PingFang TC", sans-serif;
-    font-size: 8px; fill: var(--inkfad); opacity: 0.65;
+    font-size: 7.5px; fill: var(--map-charcoal); opacity: 0.4;
   }
-  .nm-compass-line { stroke: var(--inkfad); stroke-width: 1.6; stroke-linecap: round; opacity: 0.45; }
+  .nm-compass-line { stroke: var(--map-charcoal); stroke-width: 1.3; stroke-linecap: round; opacity: 0.3; }
 
   /* ============ 導航連結的線條 pin（取代 emoji，跨平台一致） ============ */
   .pin-svg { width: 11px; height: 11px; margin-left: 4px; vertical-align: -1px; color: var(--golddk); opacity: 0.6; }
@@ -214,7 +222,7 @@
   /* ============ 每日天氣小卡 ============ */
   .dw-card {
     display: flex; align-items: center; gap: 12px; margin-top: 12px;
-    border: 1px solid rgba(227, 217, 194, 0.7); background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.07); background: rgba(255, 255, 255, 0.55);
     border-radius: 16px; padding: 10px 14px;
   }
   .dw-ico { font-size: 26px; line-height: 1; }
@@ -239,7 +247,7 @@
   .wx-scroll { display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 2px 2px 4px; scrollbar-width: none; }
   .wx-scroll::-webkit-scrollbar { display: none; }
   .wx-cell {
-    flex: 0 0 62px; text-align: center; border: 1px solid rgba(227, 217, 194, 0.7);
+    flex: 0 0 62px; text-align: center; border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 14px; padding: 8px 4px; background: rgba(255, 255, 255, 0.55);
     font-size: 11px; color: var(--inksub); line-height: 1.5;
   }
@@ -257,9 +265,9 @@
   .budget-total .big { font-size: 34px; line-height: 1; letter-spacing: -0.01em; }
   .budget-total .cap { font-size: 13px; color: var(--inksub); }
   .budget-bar { height: 10px; border-radius: 999px; background: var(--goldbg); border: 1px solid var(--goldbd); overflow: hidden; margin: 10px 0 6px; }
-  .budget-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #CFAF7B, var(--golddk)); transition: width 0.9s cubic-bezier(0.25, 0.8, 0.3, 1); }
+  .budget-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #3D5588, var(--golddk)); transition: width 0.9s cubic-bezier(0.25, 0.8, 0.3, 1); }
   .budget-days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 12px; }
-  .budget-day { text-align: center; border: 1px solid rgba(227, 217, 194, 0.7); background: rgba(255, 255, 255, 0.55); border-radius: 12px; padding: 7px 2px; }
+  .budget-day { text-align: center; border: 1px solid rgba(0, 0, 0, 0.07); background: rgba(255, 255, 255, 0.55); border-radius: 12px; padding: 7px 2px; }
   .budget-day .d { font-size: 10.5px; color: var(--inkfad); }
   .budget-day .v { font-size: 12px; color: var(--ink); }
 
@@ -278,10 +286,10 @@
   .ig-title { font-size: 22px; line-height: 1.3; }
   .ig-sub { font-size: 12px; color: var(--inkfad); margin: 2px 0 6px; }
   .list-row { display: flex; gap: 12px; padding: 9px 2px; align-items: baseline; }
-  .list-row + .list-row { border-top: 0.5px solid rgba(227, 217, 194, 0.55); }
+  .list-row + .list-row { border-top: 0.5px solid rgba(0, 0, 0, 0.07); }
   .list-row .k { font-size: 13px; font-weight: 600; flex: none; }
   .list-row .v { font-size: 12.5px; color: var(--inksub); }
-  .idea-box { margin-top: 14px; border-radius: 16px; padding: 12px 16px; background: var(--goldbg); border: 1px solid rgba(227, 217, 194, 0.7); }
+  .idea-box { margin-top: 14px; border-radius: 16px; padding: 12px 16px; background: var(--goldbg); border: 1px solid rgba(0, 0, 0, 0.07); }
   .idea-box .lab { font-size: 10.5px; color: var(--inkfad); letter-spacing: 0.14em; margin-bottom: 3px; }
   .idea-box .txt { font-size: 13px; }
 
@@ -304,29 +312,39 @@
   /* ============ 📸 智能記帳模組 ============ */
   .cam-btn {
     width: 100%; margin: 12px 0 6px; padding: 13px; border-radius: 16px; cursor: pointer;
-    border: 1.5px dashed var(--gold); background: rgba(195, 163, 109, 0.07); color: var(--golddk);
+    border: 1.5px dashed var(--gold); background: rgba(27, 42, 73, 0.07); color: var(--golddk);
     font-size: 14px; font-weight: 600; font-family: inherit;
     display: flex; align-items: center; justify-content: center; gap: 8px;
     transition: transform 0.12s ease, background 0.15s ease;
   }
-  .cam-btn:active { transform: scale(0.97); background: rgba(195, 163, 109, 0.16); }
+  .cam-btn:active { transform: scale(0.97); background: rgba(27, 42, 73, 0.16); }
   .cam-btn svg { width: 20px; height: 20px; }
   .exp-row { display: flex; align-items: baseline; gap: 8px; padding: 10px 2px; }
-  .exp-row + .exp-row { border-top: 0.5px solid rgba(227, 217, 194, 0.55); }
+  .exp-row + .exp-row { border-top: 0.5px solid rgba(0, 0, 0, 0.07); }
   .exp-emo { flex: none; font-size: 16px; }
   .exp-name { flex: 1; min-width: 0; font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .exp-jpy { flex: none; font-size: 12px; color: var(--inkfad); }
   .exp-arr { flex: none; font-size: 11px; color: var(--goldbd); }
   .exp-twd { flex: none; font-size: 14.5px; color: var(--ink); }
-  .exp-total { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 2px 2px; border-top: 1px solid rgba(227, 217, 194, 0.8); margin-top: 2px; }
+  .exp-total { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 2px 2px; border-top: 1px solid rgba(0, 0, 0, 0.07); margin-top: 2px; }
   .exp-total .lab { font-size: 12px; color: var(--inksub); letter-spacing: 0.1em; }
   .exp-total .val { font-size: 20px; color: var(--golddk); }
+  .exp-empty { text-align: center; font-size: 13px; color: var(--inkfad); padding: 18px 0 10px; line-height: 1.8; }
+  .scan-link {
+    width: 100%; margin-top: 14px; padding: 10px; border-radius: 12px; cursor: pointer;
+    border: 1.5px dashed var(--goldbd); background: transparent;
+    color: var(--inksub); font-size: 13px; font-weight: 600; font-family: inherit;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    transition: background 0.15s ease, transform 0.12s ease;
+  }
+  .scan-link:active { transform: scale(0.97); background: var(--goldbg); }
+  .scan-link svg { width: 16px; height: 16px; }
 
   /* ============ Toast ============ */
   #toast {
     position: fixed; left: 50%; transform: translateX(-50%) translateY(20px);
     bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); z-index: 60;
-    background: rgba(74, 67, 59, 0.92); color: #FFF; font-size: 13px;
+    background: rgba(20, 24, 20, 0.92); color: #FFF; font-size: 13px;
     padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease; max-width: 86vw;
   }
@@ -376,7 +394,7 @@
   }
   .ele-num { font-size: 54px; line-height: 1; color: var(--ink); transition: text-shadow 0.25s ease; }
   .ele-num .ele-unit { font-size: 20px; color: var(--inksub); margin-left: 2px; }
-  .ele-num.ding { text-shadow: 0 0 22px rgba(195, 163, 109, 0.9), 0 0 44px rgba(195, 163, 109, 0.45); }
+  .ele-num.ding { text-shadow: 0 0 22px rgba(27, 42, 73, 0.9), 0 0 44px rgba(27, 42, 73, 0.45); }
   .ele-label { font-size: 11px; letter-spacing: 0.34em; color: var(--inkfad); text-transform: uppercase; }
   @media (prefers-reduced-motion: reduce) {
     #elevator { display: none; }
@@ -498,7 +516,11 @@
     </div>
     <div id="formState" class="hiddn">
       <div class="sec-title" style="text-align:center;margin-bottom:4px">快速記帳</div>
-      <div class="sub-note" style="text-align:center">AI 已帶入辨識結果，可手動修改</div>
+      <div class="sub-note" style="text-align:center">輸入品項與日幣金額，即時匯率自動換算</div>
+      <button type="button" class="scan-link" id="scanBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 8.5 A1.5 1.5 0 0 1 5.5 7 H8 l1.4-2 h5.2 L16 7 h2.5 A1.5 1.5 0 0 1 20 8.5 V17 a1.5 1.5 0 0 1 -1.5 1.5 h-13 A1.5 1.5 0 0 1 4 17 Z"/>
+          <circle cx="12" cy="12.5" r="3.2"/></svg>拍收據 / 刷卡截圖（選用）</button>
       <div class="exp-form-row"><span class="lab">品項</span><input id="expName" class="exp-input" type="text" style="text-align:left"></div>
       <div class="exp-form-row"><span class="lab">金額 ¥</span><input id="expJpy" class="exp-input" type="number" inputmode="numeric" min="0" step="1"></div>
       <div class="pill-row" id="expDayPills" style="margin:14px 0 0;justify-content:center"></div>
@@ -664,13 +686,21 @@
    * 5. 旅遊記帳（示範資料，全程 TWD；¥ → NT$ 依 0.22 換算）
    * ================================================================ */
   var FX = 0.22, BUDGET_TWD = 40000;
-  var EXPENSES = {
-    d1: [['☕', 'ONIBUS COFFEE', 1000], ['📚', "TRAVELER'S FACTORY 手帳", 3800], ['🥪', 'SIDEWALK STAND 午餐', 1600], ['🚃', '東橫線特急 → 橫濱', 310]],
-    d2: [['🥯', 'SCHOOL BUS 早午餐', 1400], ['🛍', '1LDK apartments.', 12000], ['🍰', 'DOLCE TACUBO', 2200], ['🧋', 'uRn chai 香料奶茶', 850], ['🍕', '聖林館（4 位）', 8400]],
-    d3: [['🌭', 'Paddlers 熱狗 + 手沖', 1800], ['☕', 'FUGLEN TOKYO', 1250], ['📖', 'SPBS 選書', 2400], ['🛋', 'Dill Pickle Club', 6500]],
-    d4: [['🍞', 'TAS YARD 法式吐司', 1900], ['🛋', 'CIBONE 選物', 9800], ['🚃', '半藏門線回押上', 260]],
-    d5: [['🍣', '立喰い鮨 浩也', 3000], ['💡', 'OZEKI AKARI 45A 燈', 28000], ['🏪', 'FAMIMA PARK 伴手禮', 1240]]
-  };
+  /* 真實記帳：資料存 localStorage（手機瀏覽器本機保存，關掉重開都在），起始全空 */
+  var EXP_KEY = 'tokyolife_expenses_v1';
+  function loadExpenses() {
+    var base = { d1: [], d2: [], d3: [], d4: [], d5: [] };
+    try {
+      var saved = JSON.parse(localStorage.getItem(EXP_KEY) || 'null');
+      if (saved) Object.keys(base).forEach(function (k) { if (Array.isArray(saved[k])) base[k] = saved[k]; });
+    } catch (e) { /* 私密瀏覽等情況讀不到就從空開始 */ }
+    return base;
+  }
+  function saveExpenses() {
+    try { localStorage.setItem(EXP_KEY, JSON.stringify(EXPENSES)); }
+    catch (e) { showToast('儲存失敗：瀏覽器不允許本機儲存'); }
+  }
+  var EXPENSES = loadExpenses();
   function jpyToTwd(y) { return Math.round(y * FX); }
   function fmt(n) { return n.toLocaleString('en-US'); }
   function dayTotalTwd(k) {
@@ -678,18 +708,23 @@
   }
   function expenseCard(dayKeys) {
     var html = '<div class="card"><div class="wx-head"><div class="sec-title">當日記帳</div><div class="sub-note">' + fxNoteText() + '</div></div>'
-      + '<div class="sub-note" style="margin-top:6px">用右下角相機鈕拍收據，AI 自動入帳</div>';
-    var total = 0;
+      + '<div class="sub-note" style="margin-top:6px">右下角相機鈕記帳・長按任一筆可刪除</div>';
+    var total = 0, count = 0;
     dayKeys.forEach(function (k) {
-      EXPENSES[k].forEach(function (e) {
-        var twd = jpyToTwd(e[2]); total += twd;
-        html += '<div class="exp-row"><span class="exp-emo">' + e[0] + '</span>'
+      EXPENSES[k].forEach(function (e, i) {
+        var twd = jpyToTwd(e[2]); total += twd; count++;
+        html += '<div class="exp-row" data-day="' + k + '" data-i="' + i + '"><span class="exp-emo">' + e[0] + '</span>'
           + '<span class="exp-name">' + e[1] + '</span>'
           + '<span class="exp-jpy tnum">¥' + fmt(e[2]) + '</span><span class="exp-arr">→</span>'
           + '<span class="exp-twd font-custom tnum">NT$ ' + fmt(twd) + '</span></div>';
       });
     });
-    html += '<div class="exp-total"><span class="lab">小計（TWD）</span><span class="val font-custom tnum">NT$ ' + fmt(total) + '</span></div></div>';
+    if (!count) {
+      html += '<div class="exp-empty">今天還沒有記帳<br>點右下角相機鈕記下第一筆</div>';
+    } else {
+      html += '<div class="exp-total"><span class="lab">小計（TWD）</span><span class="val font-custom tnum">NT$ ' + fmt(total) + '</span></div>';
+    }
+    html += '</div>';
     return html;
   }
 
@@ -705,10 +740,10 @@
       nodes: [['School Bus', '10:30', 1], ['1LDK', '12:15', 0], ['代官山', '14:00', 0], ['uRn chai', '16:45', 0], ['聖林館', '18:00', 1]],
       segs: [['河岸散步 2km', 0], ['上坡走 15分', 0], ['巡店後走 12分', 0], ['日比谷線 1站', 1]],
       stops: [['10:30', 'SCHOOL BUS COFFEE 貝果早午餐', 'SCHOOL BUS COFFEE STOP NAKAMEGURO'], ['12:15', '1LDK 三店（apartments. 生活選品）', '1LDK nakameguro'], ['14:00', 'THE CORNER → Saturdays 拿鐵 → N.SUGAR → Bonjour', 'Saturdays NYC Tokyo 代官山'], ['16:00', 'DOLCE TACUBO（TableCheck 預約）', 'DOLCE TACUBO 代官山'], ['16:45', 'uRn chai 香料奶茶（惠比壽）', 'uRn chai and Tea 恵比寿'], ['18:00', '聖林館晚餐 ✓ 已訂位・4 位', '聖林館 中目黑']] },
-    d3: { d: '9/6', w: '日', theme: '西原咖啡晨午 → 蔵前 vintage → 淺草寺夜巡・居酒屋', exp: ['d3'], mapQ: '浅草寺',
-      nodes: [['Paddlers', '10:30', 1], ['FUGLEN', '13:15', 0], ['Dill Pickle', '15:45', 0], ['淺草寺', '17:30', 0], ['Hoppy通り', '18:30', 1]],
-      segs: [['富ヶ谷散步線', 0], ['銀座線 40分', 1], ['走 20分', 0], ['走 3分', 0]],
-      stops: [['10:30', 'Paddlers Coffee 熱狗（進門先點）', 'Paddlers Coffee 西原'], ['11:45', 'Nadoya no katte 老屋咖啡（週末限定）', 'nadoya no katte 代々木上原'], ['13:15', 'FUGLEN TOKYO 本店 + SPBS 奧澀書店', 'FUGLEN TOKYO 富ヶ谷'], ['15:45', 'Dill Pickle Club 蔵前 vintage', 'Dill Pickle Club 鳥越'], ['16:30', '抵達淺草（漫步雷門與仲見世通）', '雷門 浅草'], ['17:30', '淺草寺夜巡（入夜點燈與無人空景）', '浅草寺'], ['18:30', '淺草 Hoppy 通り（傳統居酒屋・燉牛筋與生啤）', 'ホッピー通り 浅草']] },
+    d3: { d: '9/6', w: '日', theme: '西原晨午 → 蔵前 → SABO 下午茶 → 淺草寺夜巡・居酒屋', exp: ['d3'], mapQ: '浅草寺',
+      nodes: [['Paddlers', '10:30', 1], ['FUGLEN', '13:15', 0], ['Dill Pickle', '14:45', 0], ['SABO', '15:30', 0], ['淺草寺', '17:30', 0], ['Hoppy通り', '18:30', 1]],
+      segs: [['富ヶ谷散步線', 0], ['銀座線 40分', 1], ['走 8分', 0], ['走 15分', 0], ['走 3分', 0]],
+      stops: [['10:30', 'Paddlers Coffee 熱狗（進門先點）', 'Paddlers Coffee 西原'], ['11:45', 'Nadoya no katte 老屋咖啡（週末限定）', 'nadoya no katte 代々木上原'], ['13:15', 'FUGLEN TOKYO 本店 + SPBS 奧澀書店', 'FUGLEN TOKYO 富ヶ谷'], ['14:45', 'Dill Pickle Club 蔵前 vintage', 'Dill Pickle Club 鳥越'], ['15:30', '淺草橋 SABO TOKYO（原石吧台工業風咖啡・當日第二杯上限）', 'SABO TOKYO 浅草橋'], ['16:30', '抵達淺草（漫步雷門與仲見世通）', '雷門 浅草'], ['17:30', '淺草寺夜巡（入夜點燈與無人空景）', '浅草寺'], ['18:30', '淺草 Hoppy 通り（傳統居酒屋・燉牛筋與生啤）', 'ホッピー通り 浅草']] },
     d4: { d: '9/7', w: '一', theme: 'TAS Yard → 表參道軟裝軸（半藏門線直達回家）', exp: ['d4'], mapQ: '表参道駅',
       nodes: [['TAS YARD', '11:00', 1], ['PAMM家', '13:15', 0], ['GYRE', '14:15', 0], ['Found MUJI', '16:00', 0], ['回押上', '19:00', 1]],
       segs: [['走 15分', 0], ['走 8分', 0], ['走 8分', 0], ['半藏門線直達 40分', 1]],
@@ -741,8 +776,8 @@
           poi:  [[104, 30, '星巴克烘焙工坊'], [26, 118, '代官山蔦屋'], [76, 164, 'MARINE & WALK']] },
     d2: { main: [[42, 40, 'School Bus'], [92, 86, '1LDK'], [140, 120, '代官山'], [96, 160, '聖林館']],
           poi:  [[46, 108, '西鄉山公園'], [160, 64, '蔦屋書店'], [168, 108, 'LOG ROAD']] },
-    d3: { main: [[100, 158, '雷門'], [104, 70, '淺草寺本堂'], [46, 98, 'Hoppy通り(居酒屋)', 1]],
-          poi:  [[128, 116, '仲見世通り'], [168, 142, '晴空塔'], [76, 40, '花屋敷']] },
+    d3: { main: [[40, 168, 'SABO TOKYO'], [104, 152, '雷門'], [108, 66, '淺草寺本堂'], [48, 96, 'Hoppy通り(居酒屋)', 1]],
+          poi:  [[132, 112, '仲見世通り'], [170, 140, '晴空塔'], [78, 36, '花屋敷']] },
     d4: { main: [[64, 44, 'TAS YARD'], [96, 92, 'PAMM家'], [124, 124, 'GYRE'], [152, 158, 'Found MUJI']],
           poi:  [[36, 96, '明治神宮'], [70, 136, '表參道之丘'], [166, 128, 'Prada 青山']] },
     d5: { main: [[46, 150, '浩也 大門'], [88, 112, 'FAMIMA PARK'], [156, 52, 'OZEKI 人形町']],
@@ -761,17 +796,17 @@
       svg += '<circle class="nm-poi" cx="' + p[0] + '" cy="' + p[1] + '" r="4"/>'
            + '<text class="nm-poi-label" x="' + p[0] + '" y="' + (p[1] + 12) + '" text-anchor="middle">' + p[2] + '</text>';
     });
-    /* 主節點：放大加飽滿的焦糖實心 + 奶油芯 + 粗線體標籤
+    /* 主節點：海軍藍實心 + 奶油芯 + 粗線體標籤（尺寸收斂留呼吸）
        （n[3]=1 強調終點放大；n[3]=2 放大 + 星星閃光 = 本日最高潮） */
     m.main.forEach(function (n) {
-      var r = n[3] ? 8.2 : 6.5, core = n[3] ? 3 : 2.4;
+      var r = n[3] ? 7 : 5.4, core = n[3] ? 2.6 : 2;
       svg += '<circle class="nm-node" cx="' + n[0] + '" cy="' + n[1] + '" r="' + r + '"/>'
            + '<circle class="nm-node-core" cx="' + n[0] + '" cy="' + n[1] + '" r="' + core + '"/>';
       if (n[3] === 2) {
-        var sx = n[0] + 12, sy = n[1] - 12;
-        svg += '<path class="nm-node" d="M' + sx + ' ' + (sy - 6.5) + ' L' + (sx + 1.9) + ' ' + (sy - 1.9) + ' L' + (sx + 6.5) + ' ' + sy
-             + ' L' + (sx + 1.9) + ' ' + (sy + 1.9) + ' L' + sx + ' ' + (sy + 6.5) + ' L' + (sx - 1.9) + ' ' + (sy + 1.9)
-             + ' L' + (sx - 6.5) + ' ' + sy + ' L' + (sx - 1.9) + ' ' + (sy - 1.9) + ' Z"/>';
+        var sx = n[0] + 10.5, sy = n[1] - 10.5;
+        svg += '<path class="nm-node" d="M' + sx + ' ' + (sy - 5.5) + ' L' + (sx + 1.6) + ' ' + (sy - 1.6) + ' L' + (sx + 5.5) + ' ' + sy
+             + ' L' + (sx + 1.6) + ' ' + (sy + 1.6) + ' L' + sx + ' ' + (sy + 5.5) + ' L' + (sx - 1.6) + ' ' + (sy + 1.6)
+             + ' L' + (sx - 5.5) + ' ' + sy + ' L' + (sx - 1.6) + ' ' + (sy - 1.6) + ' Z"/>';
       }
       svg += '<text class="nm-label" x="' + n[0] + '" y="' + (n[1] + r + 10.5) + '" text-anchor="middle">' + n[2] + '</text>';
     });
@@ -974,10 +1009,6 @@
   /* ================================================================
    * 11. 📸 懸浮記帳相機：真相機呼叫 → AI 辨識模擬 → 匯率換算入帳
    * ================================================================ */
-  var FAKE_ITEMS = [
-    ['🍜', '拉麵午餐', 980], ['☕', '手沖咖啡', 650], ['🍰', '甜點時間', 1450],
-    ['🛍', '選物小物', 2300], ['🍙', '便利商店補給', 420], ['🎫', '交通票券', 310]
-  ];
   var expTargetDay = 'd1', expEmoji = '🧾';
   function renderExpDayPills() {
     var labels = { d1: '9/4', d2: '9/5', d3: '9/6', d4: '9/7', d5: '9/8' }, html = '';
@@ -995,24 +1026,31 @@
     $('fxNote').textContent = fxNoteText();
   }
   $('expJpy').addEventListener('input', updateExpTwd);
-  $('fabCam').addEventListener('click', function () { $('camInput').click(); });
+  /* FAB：直接開記帳表單（拍收據是表單內的選用步驟） */
+  function openExpForm() {
+    expEmoji = '🧾';
+    $('expName').value = '';
+    $('expJpy').value = '';
+    expTargetDay = TRIP[currentView] ? currentView : 'd1';    // 預設記到目前瀏覽的那天
+    renderExpDayPills();
+    updateExpTwd();
+    $('scanState').classList.add('hiddn');
+    $('formState').classList.remove('hiddn');
+    $('expModal').classList.remove('hiddn');
+  }
+  $('fabCam').addEventListener('click', openExpForm);
+  $('scanBtn').addEventListener('click', function () { $('camInput').click(); });
   $('camInput').addEventListener('change', function () {
     if (!this.files || !this.files.length) return;
     this.value = '';                                          // 允許連續拍同一張
-    $('expModal').classList.remove('hiddn');
-    $('scanState').classList.remove('hiddn');
     $('formState').classList.add('hiddn');
-    setTimeout(function () {                                  // 模擬 AI 辨識 1.5 秒
-      var pick = FAKE_ITEMS[Math.floor(Math.random() * FAKE_ITEMS.length)];
-      expEmoji = pick[0];
-      $('expName').value = pick[1];
-      $('expJpy').value = pick[2];
-      expTargetDay = TRIP[currentView] ? currentView : 'd1';  // 預設記到目前瀏覽的那天
-      renderExpDayPills();
-      updateExpTwd();
+    $('scanState').classList.remove('hiddn');
+    setTimeout(function () {                                  // 掃描動畫後回到表單，手動確認金額
       $('scanState').classList.add('hiddn');
       $('formState').classList.remove('hiddn');
-    }, 1500);
+      showToast('照片已收到，請確認品項與金額');
+      $('expJpy').focus();
+    }, 1200);
   });
   $('expCancel').addEventListener('click', function () { $('expModal').classList.add('hiddn'); });
   $('expConfirm').addEventListener('click', function () {
@@ -1020,10 +1058,34 @@
     var y = parseInt($('expJpy').value, 10) || 0;
     if (!y) { showToast('請輸入日幣金額'); return; }
     EXPENSES[expTargetDay].push([expEmoji, name, y]);
+    saveExpenses();
     refreshMoney();
     $('expModal').classList.add('hiddn');
     showToast('已記一筆 NT$ ' + fmt(jpyToTwd(y)) + '，計入 ' + { d1: '9/4', d2: '9/5', d3: '9/6', d4: '9/7', d5: '9/8' }[expTargetDay]);
   });
+  /* 長按任一筆記帳 0.6 秒 → 確認後刪除 */
+  var pressTimer = null;
+  function startPress(e) {
+    var row = e.target && e.target.closest ? e.target.closest('.exp-row[data-day]') : null;
+    if (!row) return;
+    pressTimer = setTimeout(function () {
+      var d = row.dataset.day, i = parseInt(row.dataset.i, 10);
+      var it = EXPENSES[d] && EXPENSES[d][i];
+      if (!it) return;
+      if (window.confirm('刪除這筆「' + it[1] + '」¥' + fmt(it[2]) + '？')) {
+        EXPENSES[d].splice(i, 1);
+        saveExpenses();
+        refreshMoney();
+        showToast('已刪除');
+      }
+    }, 600);
+  }
+  function endPress() { clearTimeout(pressTimer); }
+  document.addEventListener('touchstart', startPress, { passive: true });
+  document.addEventListener('touchend', endPress);
+  document.addEventListener('touchmove', endPress, { passive: true });
+  document.addEventListener('mousedown', startPress);
+  document.addEventListener('mouseup', endPress);
 
   /* ================================================================
    * 12. 初始化
