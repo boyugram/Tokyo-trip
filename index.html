@@ -444,12 +444,142 @@
     .ele-lines span { animation: none; }
     .view { animation: none; }
   }
+
+  /* 2026 redesign — top-floor night reveal + early-autumn travel journal */
+  #elevator { background:#07101d; overflow:hidden; }
+  .ele-panel {
+    background:linear-gradient(90deg,#12171d 0%,#252c31 48%,#0d1116 100%);
+    border-color:rgba(255,255,255,.08); border-style:solid; border-width:0 1px;
+    box-shadow:inset 0 0 70px rgba(0,0,0,.65), 0 0 28px rgba(0,0,0,.75);
+  }
+  .ele-l:after,.ele-r:after { content:""; position:absolute; top:0; bottom:0; width:2px; background:rgba(220,225,219,.22); }
+  .ele-l:after { right:5%; } .ele-r:after { left:5%; }
+  .ele-core { color:#e9dfc8; }
+  .ele-num { color:#f5ead0; text-shadow:0 0 24px rgba(224,168,93,.18); }
+  .ele-num .ele-unit,.ele-label { color:rgba(245,234,208,.56); }
+  .ele-gauge { background:linear-gradient(rgba(238,207,154,.35),rgba(238,207,154,.35)) 50% 0/1px 100% no-repeat,repeating-linear-gradient(180deg,#d7aa69 0 1px,transparent 1px 26.75px) 0 0/11px 100% no-repeat; }
+  .night-reveal { position:absolute; inset:0; background:linear-gradient(#071324 0%,#102847 52%,#e78159 120%); overflow:hidden; }
+  .night-reveal:before { content:""; position:absolute; inset:0; opacity:.58; background-image:radial-gradient(circle at 14% 19%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 73% 14%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 83% 32%,#ffe4b8 0 1px,transparent 1.5px),radial-gradient(circle at 38% 27%,#fff 0 1px,transparent 1.5px); background-size:123px 97px,181px 137px,149px 119px,207px 163px; }
+  .night-copy { position:absolute; z-index:2; top:max(8vh,48px); left:0; right:0; text-align:center; color:#f7eedb; letter-spacing:.28em; font-size:11px; opacity:0; transform:translateY(8px); transition:.8s .48s; }
+  #elevator.open .night-copy { opacity:.84; transform:none; }
+  .skyline { position:absolute; left:-2%; right:-2%; bottom:0; height:46%; background:linear-gradient(173deg,transparent 0 19%,#08101a 19.5%); filter:drop-shadow(0 -8px 28px rgba(8,14,25,.5)); }
+  .skyline:after { content:""; position:absolute; inset:28% 0 0; opacity:.75; background-image:linear-gradient(90deg,transparent 45%,#efb15f 46% 48%,transparent 49%),linear-gradient(#080e16 0 0); background-size:19px 18px,100% 100%; clip-path:polygon(0 32%,8% 30%,8% 8%,18% 8%,18% 39%,27% 39%,27% 18%,37% 18%,37% 42%,50% 42%,50% 0,60% 0,60% 32%,71% 32%,71% 12%,80% 12%,80% 38%,90% 38%,90% 20%,100% 20%,100% 100%,0 100%); }
+  .tokyo-tower { position:absolute; z-index:1; left:55%; bottom:12%; width:105px; height:58%; filter:drop-shadow(0 0 17px rgba(255,116,64,.52)); }
+  .window-rail { position:absolute; z-index:3; left:0; right:0; bottom:7%; height:9px; background:#03070c; box-shadow:0 -2px 0 rgba(255,255,255,.1),0 -38px 0 rgba(3,7,12,.92); transform:perspective(150px) rotateX(18deg); }
+
+  .day-ink { position:relative; height:176px; margin:-20px -20px 18px; overflow:hidden; border-radius:23px 23px 15px 15px; background:#e8e1d1; isolation:isolate; }
+  .day-ink svg { width:100%; height:100%; display:block; }
+  .day-ink:after { content:""; position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:.16; background-image:repeating-radial-gradient(circle at 30% 40%,#5b4b39 0 .5px,transparent .7px 4px); }
+  .ink-caption { position:absolute; z-index:2; left:18px; bottom:14px; color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.55); }
+  .ink-caption b { display:block; font-size:18px; letter-spacing:.06em; }
+  .ink-caption span { font-size:10px; letter-spacing:.16em; opacity:.78; }
+  .map-terrain { fill:#eef0e7; }
+  .map-water { fill:#cbdde0; opacity:.9; }
+  .map-road { fill:none; stroke:#fff; stroke-width:2.2; opacity:.92; }
+  .map-road.minor { stroke-width:.75; opacity:.78; }
+  .map-rail { fill:none; stroke:#788693; stroke-width:1.1; stroke-dasharray:3 2; opacity:.58; }
+  .map-park { fill:#c9d8c4; opacity:.8; }
+  .mini-map { background:#e9ece5; }
+  .mini-map .nm-wm { opacity:.11; }
+  .nm-path { stroke:#b13a32; stroke-width:3.4; stroke-dasharray:none; opacity:.86; filter:drop-shadow(0 1px 2px rgba(177,58,50,.25)); }
+  .nm-node { fill:#b13a32; } .nm-node-core { fill:#fff; }
+  .tokyo-map-redesign { margin-top:12px; border-radius:18px; overflow:hidden; border:1px solid rgba(0,0,0,.06); background:#e8ece5; }
+  .tokyo-map-redesign svg { display:block; width:100%; height:auto; }
+  .map-legend { display:flex; flex-wrap:wrap; gap:6px 12px; margin-top:10px; font-size:10px; color:var(--inkfad); }
+  .map-legend i { display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:4px; vertical-align:-1px; }
+  @media (max-width:420px) { .day-ink { height:158px; } .tokyo-tower { left:51%; width:94px; } }
+
+  /* Soft Tokyo — bright washi, curved transit forms, quiet city color */
+  :root {
+    --cream:#f3f1ea; --gold:#bc4c3d; --golddk:#7f3029; --goldbd:#ddd7cd;
+    --goldbg:#f7f3ed; --ink:#29302d; --inksub:#626965; --inkfad:#9a9d96;
+    --warn:#b44737; --mustard:#d3a967; --tokyo-blue:#70899c; --tokyo-green:#708778;
+  }
+  body {
+    background:
+      radial-gradient(circle at 12% 6%,rgba(188,76,61,.08),transparent 27rem),
+      radial-gradient(circle at 94% 34%,rgba(112,137,156,.10),transparent 25rem),
+      var(--cream);
+  }
+  .wrap { max-width:38rem; padding-left:18px; padding-right:18px; }
+  header { padding:26px 4px 22px; align-items:center; }
+  .brand { font-size:30px; letter-spacing:.01em; }
+  .brand:after { content:" 東京五日"; color:var(--golddk); font-family:-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif; font-size:10px; font-weight:500; letter-spacing:.18em; margin-left:7px; vertical-align:middle; }
+  #pageSubtitle { color:var(--inksub); letter-spacing:.11em; }
+  .home-btn { width:44px; height:44px; border:0; border-radius:16px; background:rgba(255,255,255,.78); color:var(--golddk); box-shadow:0 8px 24px rgba(64,52,45,.10),inset 0 0 0 1px rgba(127,48,41,.10); }
+
+  .card { border:1px solid rgba(71,64,57,.07); border-radius:28px; background:rgba(255,255,252,.86); box-shadow:0 12px 34px rgba(64,52,45,.075); }
+  .card + .card { margin-top:20px; }
+  .sec-title { color:var(--ink); font-size:12px; letter-spacing:.16em; }
+  .sec-title:after { content:""; display:inline-block; width:22px; height:1px; margin-left:8px; background:var(--gold); vertical-align:middle; opacity:.7; }
+  .sub-note { color:var(--inkfad); letter-spacing:.05em; }
+  .wx-now { margin:15px 0 16px; }
+  .wx-temp { color:var(--ink); }
+  .wx-cell { border:0; border-radius:18px; background:#f4f0e9; box-shadow:inset 0 0 0 1px rgba(71,64,57,.06); }
+  .wx-cell:nth-child(odd) { background:#eef2f1; }
+  .wx-alert { border:0; border-radius:18px; }
+
+  .tokyo-map-redesign { border:0; border-radius:24px; box-shadow:inset 0 0 0 1px rgba(71,64,57,.07); }
+  .map-legend { padding-left:4px; }
+  .map-legend i { box-shadow:0 0 0 3px rgba(71,64,57,.04); }
+  .day-ink { margin:-20px -20px 20px; border-radius:27px 27px 18px 18px; }
+  .ink-caption { left:18px; bottom:16px; }
+  .ink-caption b { font-size:19px; letter-spacing:.04em; }
+  .ink-caption span { display:block; margin-top:1px; }
+  .ed-eyebrow { display:inline-flex; align-items:center; height:25px; padding:0 10px; margin-bottom:9px; border-radius:999px; background:#f1e8df; color:var(--golddk); letter-spacing:.13em; }
+  .ed-head { gap:9px; }
+  .ed-no { color:var(--gold); font-size:38px; }
+  .ed-bar { color:var(--goldbd); }
+  .ed-title { font-size:27px; letter-spacing:.01em; }
+  .ed-sub { margin-top:6px; }
+  .dw-card { border:0; border-radius:20px; background:linear-gradient(135deg,#f5eee5,#edf2f0); box-shadow:inset 0 0 0 1px rgba(71,64,57,.06); }
+  .mini-map { border:0; border-radius:22px; box-shadow:inset 0 0 0 1px rgba(71,64,57,.07); }
+  .ed-info-row { padding:9px 2px; border-color:rgba(71,64,57,.07); }
+  .list-row { padding:11px 3px; border-radius:15px; }
+  .list-row + .list-row { border-top:0; }
+  .list-row:nth-child(even) { background:rgba(243,239,232,.55); }
+  .stop-time { color:var(--golddk); }
+
+  .pill { border:0; border-radius:999px; background:#f0ede6; color:var(--inksub); box-shadow:inset 0 0 0 1px rgba(71,64,57,.06); }
+  .pill.on { background:var(--gold); color:#fff; box-shadow:0 5px 15px rgba(127,48,41,.20); }
+  .idea-box { border:0; border-radius:20px; background:#f5f1ea; }
+  .cam-btn,.scan-link { border-radius:18px; }
+  .exp-input { border:0; border-radius:16px; box-shadow:inset 0 0 0 1px var(--goldbd); }
+  .modal-card { border-radius:30px; }
+  .exp-btns button { border-radius:16px; }
+
+  nav.tabbar-wrap { left:18px; right:18px; }
+  .tabbar { max-width:430px; padding:6px; gap:3px; border:1px solid rgba(71,64,57,.08); border-radius:24px; background:rgba(255,255,252,.88); box-shadow:0 12px 32px rgba(50,50,45,.14); }
+  .nav-btn { height:46px; border-radius:18px; }
+  .nav-btn.on { background:linear-gradient(135deg,#c25b49,var(--golddk)); box-shadow:0 5px 14px rgba(127,48,41,.22); }
+  .fab { right:20px; width:54px; height:54px; border:0; border-radius:20px; background:linear-gradient(145deg,#cc705d,var(--golddk)); box-shadow:0 10px 24px rgba(127,48,41,.28); }
+  @media (max-width:380px) {
+    .wrap { padding-left:14px; padding-right:14px; }
+    .card { padding:17px; border-radius:24px; }
+    .day-ink { margin:-17px -17px 18px; border-radius:23px 23px 16px 16px; }
+    .brand { font-size:27px; }
+    .brand:after { display:none; }
+  }
 </style>
 </head>
 <body>
 
 <!-- ============ 開場：Elevator to Tokyo Tower ============ -->
 <div id="elevator" aria-hidden="true">
+  <div class="night-reveal">
+    <div class="night-copy">TOKYO · 250M · NIGHT VIEW</div>
+    <div class="skyline"></div>
+    <svg class="tokyo-tower" viewBox="0 0 100 320" aria-hidden="true">
+      <defs><linearGradient id="towerGlow" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff3d5"/><stop offset=".45" stop-color="#ff9a5f"/><stop offset="1" stop-color="#e64d39"/></linearGradient></defs>
+      <g fill="none" stroke="url(#towerGlow)" stroke-linecap="round">
+        <path d="M50 3 L28 270 M50 3 L72 270 M28 270 L15 318 M72 270 L85 318" stroke-width="4"/>
+        <path d="M37 82 H63 M32 150 H68 M26 223 H74 M18 286 H82" stroke-width="5"/>
+        <path d="M36 82 L65 150 M64 82 L35 150 M31 150 L71 223 M69 150 L29 223 M24 223 L78 286 M76 223 L22 286" stroke-width="2" opacity=".86"/>
+        <path d="M50 0 V42" stroke-width="2"/><path d="M42 43 H58" stroke-width="7"/>
+      </g>
+    </svg>
+    <div class="window-rail"></div>
+  </div>
   <div class="ele-panel ele-l"></div>
   <div class="ele-panel ele-r"></div>
   <div class="ele-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
@@ -499,44 +629,32 @@
     <div class="card">
       <div class="wx-head">
         <div class="sec-title">東京 5 日分佈</div>
-        <div class="sub-note">相對位置示意・非實際比例</div>
+        <div class="sub-note">東京灣・主要鐵道路網</div>
       </div>
-      <div class="tokyo-map" style="margin-top:10px">
-        <svg viewBox="0 0 340 230" role="img" aria-label="東京五日活動區塊分佈示意圖">
-          <!-- 山手線意象環（極淡） -->
-          <ellipse cx="168" cy="102" rx="64" ry="72" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="7"/>
-          <!-- 押上・飯店（家） -->
-          <path d="M296 34 l9 -8 9 8 v11 h-18 Z" fill="none" stroke="#1B2A49" stroke-width="2" stroke-linejoin="round"/>
-          <text class="tk-label" x="305" y="60" text-anchor="middle">押上・飯店</text>
-          <!-- Day3：淺草・上野（芥末黃） -->
-          <ellipse cx="248" cy="64" rx="44" ry="27" fill="#D4A35C" opacity="0.16"/>
-          <text class="tk-label" x="248" y="52" text-anchor="middle">淺草・上野</text>
-          <circle cx="248" cy="68" r="8.5" fill="#B8863B"/>
-          <text class="tk-badge-t tnum" x="248" y="71.5" text-anchor="middle">3</text>
-          <!-- Day5：大門・人形町（海軍藍） -->
-          <ellipse cx="208" cy="136" rx="36" ry="21" fill="#1B2A49" opacity="0.10"/>
-          <text class="tk-label" x="208" y="126" text-anchor="middle">大門・人形町</text>
-          <circle cx="208" cy="140" r="8.5" fill="#1B2A49"/>
-          <text class="tk-badge-t tnum" x="208" y="143.5" text-anchor="middle">5</text>
-          <!-- Day4：表參道（常春藤綠） -->
-          <ellipse cx="118" cy="92" rx="28" ry="18" fill="#3E5C4C" opacity="0.14"/>
-          <text class="tk-label" x="118" y="82" text-anchor="middle">表參道</text>
-          <circle cx="118" cy="96" r="8.5" fill="#3E5C4C"/>
-          <text class="tk-badge-t tnum" x="118" y="99.5" text-anchor="middle">4</text>
-          <!-- Day1+2：中目黑・代官山（海軍藍＋綠雙日） -->
-          <ellipse cx="100" cy="158" rx="44" ry="26" fill="#2E4370" opacity="0.12"/>
-          <text class="tk-label" x="100" y="146" text-anchor="middle">中目黑・代官山</text>
-          <circle cx="88" cy="164" r="8.5" fill="#1B2A49"/>
-          <text class="tk-badge-t tnum" x="88" y="167.5" text-anchor="middle">1</text>
-          <circle cx="112" cy="164" r="8.5" fill="#3E5C4C"/>
-          <text class="tk-badge-t tnum" x="112" y="167.5" text-anchor="middle">2</text>
-          <!-- Day1 傍晚：東橫線 → 橫濱（虛線指出畫面外） -->
-          <path d="M78 178 L44 204" fill="none" stroke="#1B2A49" stroke-width="2.5" stroke-dasharray="4 6" stroke-linecap="round"/>
-          <circle cx="40" cy="207" r="5" fill="none" stroke="#1B2A49" stroke-width="2.5"/>
-          <text class="tk-label" x="62" y="220" text-anchor="middle">橫濱</text>
-          <text class="tk-sub" x="88" y="196" text-anchor="middle">東橫線直達</text>
+      <div class="tokyo-map-redesign">
+        <svg viewBox="0 0 340 250" role="img" aria-label="東京五日主要行程地圖">
+          <rect width="340" height="250" fill="#e8ece5"/>
+          <path class="map-water" d="M270 0H340V250H196c18-17 33-37 42-59 10-26 1-47 16-70 14-23 18-63 16-121Z"/>
+          <path class="map-water" d="M0 218c41-8 76-2 108 12 24 10 48 14 88 20H0Z"/>
+          <path class="map-park" d="M71 44l48-18 22 35-37 34-44-18zM184 31l42-8 11 27-44 11z"/>
+          <g class="map-road minor"><path d="M20 35L268 190"/><path d="M35 190L248 18"/><path d="M11 104L275 80"/><path d="M55 10L210 225"/><path d="M131 5L122 226"/><path d="M205 2L170 226"/></g>
+          <ellipse cx="157" cy="104" rx="54" ry="72" fill="none" stroke="#8cad80" stroke-width="3" opacity=".75"/>
+          <path class="map-rail" d="M86 160C123 133 148 122 186 132S244 111 285 51"/>
+          <path fill="none" stroke="#b13a32" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M96 159L117 148M117 148L285 51M117 148L28 226M117 148L89 91L240 66M89 91L119 84M119 84L197 143L227 112"/>
+          <g font-family="sans-serif" font-size="8" fill="#6d746e"><text x="146" y="18">TOKYO</text><text x="291" y="233">TOKYO BAY</text><text x="20" y="244">YOKOHAMA</text></g>
+          <g>
+            <circle cx="285" cy="51" r="5" fill="#263f67"/><text class="tk-label" x="274" y="42">押上 HOTEL</text>
+            <circle cx="240" cy="66" r="8" fill="#b8863b"/><text class="tk-badge-t" x="240" y="69" text-anchor="middle">3</text><text class="tk-label" x="213" y="55">淺草</text>
+            <circle cx="227" cy="112" r="8" fill="#665447"/><text class="tk-badge-t" x="227" y="115" text-anchor="middle">5</text><text class="tk-label" x="235" y="127">人形町</text>
+            <circle cx="197" cy="143" r="8" fill="#665447"/><text class="tk-badge-t" x="197" y="146" text-anchor="middle">5</text><text class="tk-label" x="203" y="159">麻布台</text>
+            <circle cx="89" cy="91" r="8" fill="#3e5c4c"/><text class="tk-badge-t" x="89" y="94" text-anchor="middle">4</text><text class="tk-label" x="54" y="82">表參道</text>
+            <circle cx="96" cy="159" r="8" fill="#1b2a49"/><text class="tk-badge-t" x="96" y="162" text-anchor="middle">1</text>
+            <circle cx="117" cy="148" r="8" fill="#3e5c4c"/><text class="tk-badge-t" x="117" y="151" text-anchor="middle">2</text><text class="tk-label" x="75" y="177">中目黑・代官山</text>
+            <circle cx="28" cy="226" r="8" fill="#b13a32"/><text class="tk-badge-t" x="28" y="229" text-anchor="middle">1</text><text class="tk-label" x="39" y="225">橫濱</text>
+          </g>
         </svg>
       </div>
+      <div class="map-legend"><span><i style="background:#1b2a49"></i>住宿</span><span><i style="background:#b13a32"></i>行程動線</span><span><i style="background:#8cad80"></i>山手線</span><span><i style="background:#cbdde0"></i>水域</span></div>
     </div>
 
     <!-- 旅遊記帳摘要（單位：TWD 台幣） -->
@@ -645,7 +763,7 @@
       num.parentElement.classList.add('ding');                 // 叮！抵達 Top Deck 的微光
       setTimeout(function () {
         el.classList.add('open');                              // 遮罩一分為二向兩側滑開
-        setTimeout(function () { el.classList.add('done'); }, 720);
+        setTimeout(function () { el.classList.add('done'); }, 2200);       // 留在頂樓窗前，讓夜景完整呼吸一次
       }, 300);
     }
     requestAnimationFrame(step);
@@ -654,7 +772,7 @@
       if (!el.classList.contains('done')) {
         num.textContent = TOP;
         el.classList.add('open');
-        setTimeout(function () { el.classList.add('done'); }, 720);
+        setTimeout(function () { el.classList.add('done'); }, 2200);
       }
     }, 4500);
   })();
@@ -876,9 +994,26 @@
           main: [[46, 150, '浩也 大門'], [88, 112, 'FAMIMA PARK'], [156, 52, 'OZEKI 人形町']],
           poi:  [[30, 110, '東京鐵塔'], [66, 172, '增上寺'], [172, 84, '水天宮']] }
   };
+  function buildDayInk(k) {
+    var scenes = {
+      d1: { en:'NAKAMEGURO → YOKOHAMA', title:'目黑川，向港未來', sky:'#b7c4c0', sun:'#d97855', art:'<path d="M0 116 Q70 88 150 120 T340 104 V180H0Z" fill="#6f8278" opacity=".55"/><path d="M0 132 Q88 105 178 137 T340 120" fill="none" stroke="#eef0e7" stroke-width="18" opacity=".72"/><g stroke="#353d39" stroke-width="5" opacity=".75"><path d="M48 0Q62 61 40 131"/><path d="M292 3Q270 60 295 125"/></g><g fill="#b86d5b" opacity=".72"><circle cx="44" cy="24" r="13"/><circle cx="65" cy="43" r="9"/><circle cx="291" cy="30" r="14"/><circle cx="271" cy="51" r="8"/></g><path d="M229 100h68l-10 25h-48z" fill="#26394b" opacity=".8"/>'},
+      d2: { en:'NAKAMEGURO → DAIKANYAMA', title:'咖啡香裡的代官山', sky:'#c8bda8', sun:'#ae6545', art:'<path d="M0 122L75 84l64 27 62-52 70 48 69-20v93H0Z" fill="#6d6255" opacity=".7"/><path d="M76 84v62M201 59v91M271 107v42" stroke="#f1eadc" stroke-width="3" opacity=".65"/><path d="M112 128q22-39 44 0v30h-44z" fill="#263d39"/><circle cx="134" cy="108" r="15" fill="none" stroke="#263d39" stroke-width="5"/><g fill="#875443" opacity=".7"><circle cx="29" cy="38" r="18"/><circle cx="55" cy="29" r="11"/><circle cx="316" cy="49" r="20"/></g>'},
+      d3: { en:'NISHIHARA → ASAKUSA', title:'穿越東京，走進江戶夜色', sky:'#b6aca0', sun:'#c2543f', art:'<path d="M0 143Q86 116 162 140T340 128V180H0Z" fill="#4f514b" opacity=".68"/><path d="M104 133h142v14H104zM121 105h108v27H121zM137 86h76v19H137zM160 49h30v37h-30z" fill="#743f35" opacity=".86"/><path d="M150 49l25-25 25 25zM110 105l65-31 65 31zM89 133l86-33 86 33z" fill="#2f3634"/><g fill="#d79b61" opacity=".65"><circle cx="45" cy="68" r="13"/><circle cx="294" cy="60" r="17"/></g>'},
+      d4: { en:'KITA-SANDO → OMOTESANDO', title:'綠蔭與設計的一直線', sky:'#aeb9a4', sun:'#d1a05c', art:'<path d="M0 142L340 104V180H0Z" fill="#716b5d" opacity=".7"/><path d="M74 180L172 89 279 180" fill="#dad7c8" opacity=".62"/><path d="M132 180L174 87 214 180" fill="#f4edda" opacity=".78"/><g stroke="#405346" stroke-width="6"><path d="M39 16L55 142"/><path d="M303 7L281 134"/></g><g fill="#526958" opacity=".72"><circle cx="42" cy="40" r="31"/><circle cx="76" cy="28" r="23"/><circle cx="298" cy="34" r="35"/><circle cx="265" cy="20" r="20"/></g>'},
+      d5: { en:'DAIMON → AZABUDAI → NINGYOCHO', title:'東京鐵塔下，收好最後一盞光', sky:'#c0a998', sun:'#cb664c', art:'<path d="M0 139Q75 118 145 141T340 122V180H0Z" fill="#4d4b45" opacity=".7"/><g fill="none" stroke="#8b3f34" stroke-width="4"><path d="M218 24l-29 126M218 24l29 126M196 119h43M203 89h30M210 58h17"/><path d="M190 150h58"/></g><path d="M65 80h62v74H65z" fill="#756554" opacity=".7"/><path d="M55 80l42-30 42 30z" fill="#343a36"/><circle cx="290" cy="46" r="18" fill="#d58a56" opacity=".75"/>'}
+    };
+    var s = scenes[k];
+    return '<div class="day-ink"><svg viewBox="0 0 340 180" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + s.title + ' 初秋水墨插畫"><defs><linearGradient id="ink-' + k + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="' + s.sky + '"/><stop offset="1" stop-color="#eee7d8"/></linearGradient><filter id="wash-' + k + '"><feTurbulence baseFrequency=".025" numOctaves="3" seed="' + (k.charCodeAt(1)) + '" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2"/></filter></defs><rect width="340" height="180" fill="url(#ink-' + k + ')"/><circle cx="286" cy="37" r="24" fill="' + s.sun + '" opacity=".62"/><g filter="url(#wash-' + k + ')">' + s.art + '</g></svg><div class="ink-caption"><b>' + s.title + '</b><span>' + s.en + ' · EARLY AUTUMN</span></div></div>';
+  }
   function buildNodeMap(k) {
     var m = NODE_MAPS[k];
     var svg = '<svg class="node-map" viewBox="0 0 200 200" role="img" aria-label="' + TRIP[k].d + ' 散點方位地圖" preserveAspectRatio="xMidYMid meet">';
+    svg += '<rect class="map-terrain" width="200" height="200"/>'
+         + '<path class="map-water" d="M-10 154 C40 136 58 168 104 150 S169 126 212 143 V212H-10Z"/>'
+         + '<path class="map-park" d="M18 24l42-12 18 30-38 26zM142 24l39 9-7 32-42-8z"/>'
+         + '<g class="map-road minor"><path d="M-10 35L210 170"/><path d="M22 210L178 -10"/><path d="M-10 91L210 70"/><path d="M74 -10L132 210"/><path d="M155 -10L91 210"/></g>'
+         + '<path class="map-road" d="M-10 125 C48 104 83 112 118 94 S171 64 210 76"/>'
+         + '<path class="map-rail" d="M8 182 C56 143 106 119 191 27"/>';
     /* 最底層：超大英文區域浮水印（一眼定位當天大區） */
     if (m.wm) svg += '<text class="nm-wm" x="100" y="112" font-size="' + (m.wms || 30) + '" text-anchor="middle">' + m.wm + '</text>';
     /* 指北 */
@@ -937,6 +1072,7 @@
       rows += '<div class="list-row"><span class="stop-time font-custom tnum">' + s[0] + '</span>' + stopLabel(s) + '</div>';
     });
     return '<div class="card">'
+      + buildDayInk(k)
       /* 1. 雜誌風大標：編號 | 主地點 + 細副標 */
       + '<div class="ed-eyebrow tnum">DAY ' + m.no + ' — ' + t.d + '（' + t.w + '）</div>'
       + '<div class="ed-head font-custom"><span class="ed-no tnum">' + m.no + '</span><span class="ed-bar">|</span><span class="ed-title">' + m.t2 + '</span></div>'
