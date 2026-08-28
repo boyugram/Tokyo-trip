@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="sky" x1="18" y1="10" x2="109" y2="121" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#e7edf0"/>
+    </linearGradient>
+    <linearGradient id="tower" x1="64" y1="17" x2="64" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d85843"/>
+      <stop offset="1" stop-color="#b5362d"/>
+    </linearGradient>
+    <filter id="shadow" x="-35%" y="-25%" width="170%" height="175%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#382a2a" flood-opacity=".22"/>
+    </filter>
+  </defs>
+
+  <rect width="128" height="128" fill="#f3f1ea"/>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#sky)"/>
+  <circle cx="95" cy="30" r="14" fill="#d9a868" opacity=".62"/>
+  <path d="M13 108c24-9 77-9 102 0v16H13z" fill="#1b2a49"/>
+
+  <g filter="url(#shadow)" fill="none" stroke="url(#tower)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 15L38 114M64 15l26 99" stroke-width="8"/>
+    <path d="M33 114h62M40 91h48M46 68h36M52 45h24" stroke-width="7"/>
+    <path d="M48 91l33-23M80 91L47 68M53 68l23-23M75 68L53 45" stroke-width="4"/>
+  </g>
+
+  <path d="M31 111h66v9H31z" rx="4" fill="#c64134"/>
+  <path d="M58 15h12L64 5z" fill="#c64134"/>
+  <circle cx="64" cy="7" r="3" fill="#f0b25f"/>
+</svg>
