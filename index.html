@@ -787,7 +787,7 @@
   var SUBTITLES = {
     summary: '行程總覽 · Sep 4–8',
     d1: 'Day 1 · 9/4（五）中目黑 → 橫濱 CORTIS',
-    d2: 'Day 2 · 9/5（六）中目黑 × 代官山',
+    d2: 'Day 2 · 9/5（六）晴空塔 → 神南 → 代官山',
     d3: 'Day 3 · 9/6（日）西原 → 蔵前 → 淺草夜巡',
     d4: 'Day 4 · 9/7（一）表參道軟裝軸',
     d5: 'Day 5 · 9/8（二）大門 → 麻布台 → 人形町'
@@ -946,10 +946,10 @@
       nodes: [['押上', '9:45', 1], ['中目黑', '10:30', 0], ['書店群×3', '12:00', 0], ['港未來', '15:45', 0], ['Pia Arena', '19:00', 1]],
       segs: [['半藏門線 45分', 1], ['目黑川散步', 0], ['東橫線直通 MM線 35分', 1], ['走 12分', 0]],
       stops: [['10:30', 'ONIBUS 咖啡 + 目黑川空景', 'ONIBUS COFFEE Nakameguro'], ['11:00', 'Mid-Century MODERN（AKARI・vintage）', 'MID-Century MODERN 中目黑'], ['12:00', '書店群：TRAVELER\'S FACTORY → dessin → COW BOOKS', "TRAVELER'S FACTORY 中目黑"], ['13:20', 'BRICK & MORTAR（平日限定）', 'BRICK AND MORTAR 中目黑'], ['14:00', 'SIDEWALK STAND 午餐 + COVERCHORD', 'SIDEWALK STAND 中目黑'], ['15:10', '離開中目黑（東橫線特急，直通港未來線）', null], ['15:45', '抵達港未來（MARINE & WALK 逛街、海景咖啡）', 'MARINE AND WALK YOKOHAMA'], ['17:30', '步行前往 Pia Arena MM', 'ぴあアリーナMM'], ['18:00', '演唱會開場（買周邊 / 進場）', null], ['19:00', 'CORTIS 演唱會正式開演！', null]] },
-    d2: { d: '9/5', w: '六', theme: '中目黑 × 代官山主題日（聖林館 18:00 已訂位）', exp: ['d2'], mapQ: '代官山駅',
-      nodes: [['School Bus', '10:30', 1], ['1LDK', '12:15', 0], ['代官山', '14:00', 0], ['uRn chai', '16:45', 0], ['聖林館', '18:00', 1]],
-      segs: [['河岸散步 2km', 0], ['上坡走 15分', 0], ['巡店後走 12分', 0], ['日比谷線 1站', 1]],
-      stops: [['10:30', 'SCHOOL BUS COFFEE 貝果早午餐', 'SCHOOL BUS COFFEE STOP NAKAMEGURO'], ['12:15', '1LDK 三店（apartments. 生活選品）', '1LDK nakameguro'], ['14:00', 'THE CORNER → Saturdays 拿鐵 → N.SUGAR → Bonjour', 'Saturdays NYC Tokyo 代官山'], ['16:00', 'DOLCE TACUBO（TableCheck 預約）', 'DOLCE TACUBO 代官山'], ['16:45', 'uRn chai 香料奶茶（惠比壽）', 'uRn chai and Tea 恵比寿'], ['18:00', '聖林館晚餐 ✓ 已訂位・4 位', '聖林館 中目黑']] },
+    d2: { d: '9/5', w: '六', theme: 'MISOJYU 晴空塔 → DULTON 神南 → 代官山 → 聖林館', exp: ['d2'], mapQ: 'DOLCE TACUBO 代官山',
+      nodes: [['MISOJYU', '11:00', 1], ['DULTON', '13:10', 0], ['代官山', '14:15', 0], ['DOLCE', '16:00', 0], ['聖林館', '18:00', 1]],
+      segs: [['銀座線直達', 1], ['往代官山 15–30分', 1], ['巡店・走 10分', 0], ['往中目黑 18分', 0]],
+      stops: [['11:00', 'MISOJYU 東京ソラマチ店（1F・晴空塔腳下）', 'MISOJYU 東京ソラマチ店'], ['12:05', '步行至押上站，搭半藏門線直達澀谷', '押上駅 東京メトロ半蔵門線'], ['12:50', '抵達澀谷，步行前往神南', '渋谷駅'], ['13:10', 'DULTON 神南店（生活雜貨・五金・家飾）', 'DULTON JIN-NAN'], ['13:50', '前往代官山：計程車約 10–15 分／步行約 30 分', null], ['14:15', 'LOG ROAD → 代官山蔦屋書店', 'Daikanyama T-SITE'], ['15:00', 'THE CORNER → Saturdays → N.SUGAR → Bonjour', 'Saturdays NYC Tokyo 代官山'], ['16:00', 'DOLCE TACUBO 取貨（TableCheck 預約）', 'DOLCE TACUBO 代官山'], ['16:20', 'ZAPADY-DOO（DULTON 系列代官山店・選配）', 'ZAPADY-DOO 代官山'], ['17:15', '前往中目黑・目黑川黃昏散步', '目黒川 中目黒'], ['18:00', '聖林館晚餐 ✓ 已訂位・4 位', '聖林館 中目黑']] },
     d3: { d: '9/6', w: '日', theme: '西原晨午 → 蔵前 → SABO 下午茶 → 淺草寺夜巡・居酒屋', exp: ['d3'], mapQ: '浅草寺',
       nodes: [['Paddlers', '10:30', 1], ['FUGLEN', '13:15', 0], ['Dill Pickle', '14:45', 0], ['SABO', '15:30', 0], ['淺草寺', '17:30', 0], ['Hoppy通り', '18:30', 1]],
       segs: [['富ヶ谷散步線', 0], ['銀座線 40分', 1], ['走 8分', 0], ['走 15分', 0], ['走 3分', 0]],
@@ -985,9 +985,9 @@
     d1: { wm: 'NAKAMEGURO', wms: 30,
           main: [[56, 36, 'ONIBUS'], [30, 72, '傢俱店'], [86, 64, '書店群'], [58, 100, 'SIDEWALK'], [136, 128, 'Pia Arena MM', 2]],
           poi:  [[104, 30, '星巴克烘焙工坊'], [26, 118, '代官山蔦屋'], [76, 164, 'MARINE & WALK']] },
-    d2: { wm: 'DAIKANYAMA', wms: 30,
-          main: [[42, 40, 'School Bus'], [92, 86, '1LDK'], [140, 120, '代官山'], [96, 160, '聖林館']],
-          poi:  [[46, 108, '西鄉山公園'], [160, 64, '蔦屋書店'], [168, 108, 'LOG ROAD']] },
+    d2: { wm: 'ASAKUSA → DAIKANYAMA', wms: 17,
+          main: [[166, 35, 'MISOJYU'], [57, 89, 'DULTON'], [77, 128, '代官山'], [103, 147, 'DOLCE'], [83, 174, '聖林館']],
+          poi:  [[183, 70, '押上駅'], [36, 120, '神南'], [150, 113, '蔦屋書店']] },
     d3: { wm: 'ASAKUSA', wms: 42,
           main: [[46, 172, 'SABO TOKYO'], [110, 156, '雷門'], [114, 72, '淺草寺本堂'], [62, 104, 'Hoppy通り'], [28, 46, '鴨と葱(上野)', 1]],
           poi:  [[140, 116, '仲見世通り'], [172, 142, '晴空塔'], [92, 32, '花屋敷']] },
@@ -1001,7 +1001,7 @@
   function buildDayInk(k) {
     var scenes = {
       d1: { en:'NAKAMEGURO → YOKOHAMA', title:'目黑川，向港未來', sky:'#b7c4c0', sun:'#d97855', art:'<path d="M0 116 Q70 88 150 120 T340 104 V180H0Z" fill="#6f8278" opacity=".55"/><path d="M0 132 Q88 105 178 137 T340 120" fill="none" stroke="#eef0e7" stroke-width="18" opacity=".72"/><g stroke="#353d39" stroke-width="5" opacity=".75"><path d="M48 0Q62 61 40 131"/><path d="M292 3Q270 60 295 125"/></g><g fill="#b86d5b" opacity=".72"><circle cx="44" cy="24" r="13"/><circle cx="65" cy="43" r="9"/><circle cx="291" cy="30" r="14"/><circle cx="271" cy="51" r="8"/></g><path d="M229 100h68l-10 25h-48z" fill="#26394b" opacity=".8"/>'},
-      d2: { en:'NAKAMEGURO → DAIKANYAMA', title:'咖啡香裡的代官山', sky:'#c8bda8', sun:'#ae6545', art:'<path d="M0 122L75 84l64 27 62-52 70 48 69-20v93H0Z" fill="#6d6255" opacity=".7"/><path d="M76 84v62M201 59v91M271 107v42" stroke="#f1eadc" stroke-width="3" opacity=".65"/><path d="M112 128q22-39 44 0v30h-44z" fill="#263d39"/><circle cx="134" cy="108" r="15" fill="none" stroke="#263d39" stroke-width="5"/><g fill="#875443" opacity=".7"><circle cx="29" cy="38" r="18"/><circle cx="55" cy="29" r="11"/><circle cx="316" cy="49" r="20"/></g>'},
+      d2: { en:'ASAKUSA → JINNAN → DAIKANYAMA', title:'一碗味噌湯，穿越東京', sky:'#c8bda8', sun:'#ae6545', art:'<path d="M0 122L75 84l64 27 62-52 70 48 69-20v93H0Z" fill="#6d6255" opacity=".7"/><path d="M76 84v62M201 59v91M271 107v42" stroke="#f1eadc" stroke-width="3" opacity=".65"/><path d="M112 128q22-39 44 0v30h-44z" fill="#263d39"/><circle cx="134" cy="108" r="15" fill="none" stroke="#263d39" stroke-width="5"/><g fill="#875443" opacity=".7"><circle cx="29" cy="38" r="18"/><circle cx="55" cy="29" r="11"/><circle cx="316" cy="49" r="20"/></g>'},
       d3: { en:'NISHIHARA → ASAKUSA', title:'穿越東京，走進江戶夜色', sky:'#b6aca0', sun:'#c2543f', art:'<path d="M0 143Q86 116 162 140T340 128V180H0Z" fill="#4f514b" opacity=".68"/><path d="M104 133h142v14H104zM121 105h108v27H121zM137 86h76v19H137zM160 49h30v37h-30z" fill="#743f35" opacity=".86"/><path d="M150 49l25-25 25 25zM110 105l65-31 65 31zM89 133l86-33 86 33z" fill="#2f3634"/><g fill="#d79b61" opacity=".65"><circle cx="45" cy="68" r="13"/><circle cx="294" cy="60" r="17"/></g>'},
       d4: { en:'KITA-SANDO → OMOTESANDO', title:'綠蔭與設計的一直線', sky:'#aeb9a4', sun:'#d1a05c', art:'<path d="M0 142L340 104V180H0Z" fill="#716b5d" opacity=".7"/><path d="M74 180L172 89 279 180" fill="#dad7c8" opacity=".62"/><path d="M132 180L174 87 214 180" fill="#f4edda" opacity=".78"/><g stroke="#405346" stroke-width="6"><path d="M39 16L55 142"/><path d="M303 7L281 134"/></g><g fill="#526958" opacity=".72"><circle cx="42" cy="40" r="31"/><circle cx="76" cy="28" r="23"/><circle cx="298" cy="34" r="35"/><circle cx="265" cy="20" r="20"/></g>'},
       d5: { en:'DAIMON → AZABUDAI → NINGYOCHO', title:'東京鐵塔下，收好最後一盞光', sky:'#c0a998', sun:'#cb664c', art:'<path d="M0 139Q75 118 145 141T340 122V180H0Z" fill="#4d4b45" opacity=".7"/><g fill="none" stroke="#8b3f34" stroke-width="4"><path d="M218 24l-29 126M218 24l29 126M196 119h43M203 89h30M210 58h17"/><path d="M190 150h58"/></g><path d="M65 80h62v74H65z" fill="#756554" opacity=".7"/><path d="M55 80l42-30 42 30z" fill="#343a36"/><circle cx="290" cy="46" r="18" fill="#d58a56" opacity=".75"/>'}
@@ -1051,8 +1051,8 @@
   var ED_META = {
     d1: { no: '01', t2: '中目黑散策', sub2: '書店、傢俱與港未來的演唱會之夜',
           info: [['起點', '中目黑駅'], ['步行距離', '約 4.5 km'], ['主要氛圍', '河畔選物 × 演唱會'], ['鄰近車站', '東橫線・MM線']] },
-    d2: { no: '02', t2: '代官山漫遊', sub2: '咖啡、傢俱與河畔的質感午後',
-          info: [['起點', '池尻大橋'], ['步行距離', '約 5 km'], ['主要氛圍', '咖啡 × 選物散策'], ['鄰近車站', '東橫線・日比谷線']] },
+    d2: { no: '02', t2: '晴空塔・代官山', sub2: '從塔下的味噌湯開始，橫越東京走進安靜街區',
+          info: [['起點', '晴空塔 MISOJYU'], ['步行距離', '約 4 km'], ['主要氛圍', '和食 × 生活選物'], ['主要交通', '半藏門線・東橫線']] },
     d3: { no: '03', t2: '東西橫斷', sub2: '從西原咖啡到江戶夜巡與宵夜拉麵',
           info: [['起點', '幡ヶ谷'], ['步行距離', '約 6 km'], ['主要氛圍', '咖啡 × 江戶夜遊'], ['鄰近車站', '銀座線・淺草線']] },
     d4: { no: '04', t2: '表參道軟裝', sub2: '法式吐司與設計選物的一直線',
@@ -1162,14 +1162,14 @@
         ['FAMIMA PARK', 'NIGO 操刀的全家旗艦店，壓軸反差張']
       ],
       idea: '家裡想要日雜感？這 8 家東京軟裝店存起來（最後一家居然是全家）' },
-    { tab: '🚶 中目黑散策', title: '東京最棒的一天', sub: 'Tokyo Best Day 散策（中目黑 + 代官山）',
+    { tab: '🚶 晴空塔代官山', title: '穿越東京的一天', sub: 'Tokyo East to West（晴空塔 + 代官山）',
       spots: [
-        ['目黑川河岸', '池尻大橋一路往南的 b-roll 主軸'],
-        ['書店群三連發', 'TF → dessin → COW BOOKS，12:00 開'],
-        ['代官山坡道', '縱深構圖 + Saturdays 拿鐵露台'],
-        ['黃昏收尾', '走回河岸，聖林館披薩晚餐']
+        ['晴空塔早午餐', 'MISOJYU 東京ソラマチ店的味噌湯與飯糰開場'],
+        ['神南選物', '銀座線直達澀谷，再逛 DULTON 生活雜貨'],
+        ['代官山散步', 'LOG ROAD → 蔦屋書店 → Saturdays'],
+        ['甜點與黃昏', 'DOLCE TACUBO 取貨後走往聖林館晚餐']
       ],
-      idea: '東京最完美的一天：10:30 出門就好，一路吃逛到披薩晚餐（存起來照抄）' }
+      idea: '從晴空塔味噌湯到代官山選物：用半藏門線橫越東京的一天' }
   ];
   function renderIG(i, fromUser) {
     var pills = '';
